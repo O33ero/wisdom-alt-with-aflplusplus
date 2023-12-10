@@ -1,0 +1,1326 @@
+./ChangeLog:136:	  that the path in the fake cmd_rec is correct.  It was empty,
+./ChangeLog:3661:	  Populate the cmd_class member for the fake cmd_recs generated
+./ChangeLog:3667:	  Do not re-allocate a new tmp_pool for the internal cmd_recs in
+./ChangeLog:4701:	  Wrong cmd_rec in fix for Bug#3874.
+./ChangeLog:5902:	  Introduce new pr_cmd_set_name() function, for setting the cmd_rec
+./ChangeLog:5909:	  Backporting fix from trunk: when changing the name of a cmd_rec,
+./ChangeLog:6266:	  Add more information to the cmd_rec logged for a WRITE request,
+./ChangeLog:6270:	  Make sure to reset the cmd_id member for cmd_recs when changing
+./ChangeLog:6271:	  the cmd_rec name; otherwise, the cmd_id value will not be reset,
+./ChangeLog:6272:	  and logging may not Do The Right Thing(tm) with that cmd_rec.
+./ChangeLog:9858:	  Updating mod_copy to use the renamed cmd_rec.cmd_class struct
+./ChangeLog:9975:	  Rename the cmd_rec.class struct member to cmd_rec.cmd_class, in
+./ChangeLog:11265:	  Guard against a possibly-null session.curr_cmd_rec pointer, when
+./ChangeLog:11628:	  Defend against possible null cmd_rec argument in
+./ChangeLog:11900:	  mod_sftp generate a SITE COPY cmd_rec, not a COPY cmd_rec.
+./ChangeLog:12596:	  Use a dynamically allocated string for the fake PASS cmd_rec
+./ChangeLog:13437:	  More defensive programming: if the cmd ID of a given cmd_rec is
+./ChangeLog:13474:	  cmd_rec has a cmd_id.  Some modules (e.g. mod_sftp) may pass in a
+./ChangeLog:13475:	  cmd_rec which hasn't yet had it's cmd_id looked up.
+./ChangeLog:13503:	  These functions are used to assign an ID to a cmd_rec,
+./ChangeLog:13504:	  identifying the FTP command of that cmd_rec.	Code which wants to
+./ChangeLog:13505:	  check which FTP command a cmd_rec is can then use pr_cmd_cmp()
+./ChangeLog:13507:	  repeatedly on the same cmd_rec throughout the code.
+./ChangeLog:13914:	  Be more consistent about dispatching SFTP cmd_recs to the POST
+./ChangeLog:16149:	  Populate the cmd_rec->arg field for the cmd_recs generated during
+./ChangeLog:19294:	  Use cmd_rec->pool, not cmd_rec->tmp_pool, in a configuration
+./ChangeLog:23350:	  the cmd_rec that's dispatched to Auth callbacks had subtle and
+./ChangeLog:23358:	  cmd_rec that is dispatched for the Auth callbacks.
+./ChangeLog:24268:	  Clear the response lists before dispatching the STOR cmd_rec when
+./ChangeLog:24684:	  The cmd_rec.class field needed to be set on the SSH2 and SFTP
+./ChangeLog:24685:	  cmd_recs used.
+./ChangeLog:25449:	  Be sure to dispatch the USER cmd_rec to the POST_CMD/LOG_CMD
+./ChangeLog:26286:	  Missed a dir_check() call which needs to pass the cmd_rec
+./ChangeLog:27227:	  Include more info in the dispatched cmd_recs, e.g. channel IDs.
+./ChangeLog:28584:	  Make sure that the cmd_rec returned by pr_cmd_alloc() has an
+./ChangeLog:31841:	  dispatch a cmd_rec to a specific phase of command handlers (e.g.
+./ChangeLog:42384:	  cmd_recs.
+./contrib/mod_sql.h:35:cmd_rec *_sql_make_cmd(pool * cp, int argc, ...);
+./contrib/mod_sql.h:41:  modret_t *(*callback)(cmd_rec *, const char *, const char *));
+./contrib/mod_ldap.c:1125:MODRET handle_ldap_quota_lookup(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1150:MODRET handle_ldap_ssh_pubkey_lookup(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1171:MODRET ldap_auth_setpwent(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1184:MODRET ldap_auth_endpwent(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1194:MODRET ldap_auth_getpwuid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1209:MODRET ldap_auth_getpwnam(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1224:MODRET ldap_auth_getgrnam(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1239:MODRET ldap_auth_getgrgid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1254:MODRET ldap_auth_getgroups(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1364:MODRET ldap_auth_auth(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1423:MODRET ldap_auth_check(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1536:MODRET ldap_auth_uid2name(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1552:MODRET ldap_auth_gid2name(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1568:MODRET ldap_auth_name2uid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1583:MODRET ldap_auth_name2gid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1602:MODRET set_ldaplog(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1610:MODRET set_ldapprotoversion(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1632:MODRET set_ldapserver(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1700:MODRET set_ldapusetls(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1724:MODRET set_ldapdninfo(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1732:MODRET set_ldapsearchscope(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1754:MODRET set_ldapquerytimeout(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1773:MODRET set_ldapaliasdereference(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1805:MODRET set_ldapauthbinds(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1824:MODRET set_ldapdefaultauthscheme(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1832:MODRET set_ldapattr(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1855:MODRET set_ldapusers(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1876:MODRET set_ldapdefaultuid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1893:MODRET set_ldapdefaultgid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1910:MODRET set_ldapforcedefaultuid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1928:MODRET set_ldapforcedefaultgid(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1946:MODRET set_ldapgenhdir(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1965:MODRET set_ldapgenhdirprefix(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1973:MODRET set_ldapgenhdirprefixnouname(cmd_rec *cmd) {
+./contrib/mod_ldap.c:1992:MODRET set_ldapforcegenhdir(cmd_rec *cmd) {
+./contrib/mod_ldap.c:2011:MODRET set_ldapgrouplookups(cmd_rec *cmd) {
+./contrib/mod_ldap.c:2037:MODRET set_ldapdefaultquota(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:171:MODRET quotatab_pre_stor(cmd_rec *);
+./contrib/mod_quotatab.c:172:MODRET quotatab_post_stor(cmd_rec *);
+./contrib/mod_quotatab.c:173:MODRET quotatab_post_stor_err(cmd_rec *);
+./contrib/mod_quotatab.c:1460:MODRET set_quotadefault(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1511:MODRET set_quotadirtally(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1531:MODRET set_quotadisplayunits(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1565:MODRET set_quotaengine(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1584:MODRET set_quotaexcludefilter(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1623:MODRET set_quotalock(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1637:MODRET set_quotalog(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1647:MODRET set_quotaoptions(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1676:MODRET set_quotashowquotas(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1695:MODRET set_quotatable(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1831:MODRET quotatab_post_abor(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1836:MODRET quotatab_pre_appe(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:1907:MODRET quotatab_post_appe(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2016:MODRET quotatab_post_appe_err(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2134:MODRET quotatab_pre_copy(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2253:MODRET quotatab_post_copy(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2427:MODRET quotatab_post_copy_err(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2439:MODRET quotatab_pre_dele(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2482:MODRET quotatab_post_dele(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2617:MODRET quotatab_post_dele_err(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2632:MODRET quotatab_pre_mkd(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2642:MODRET quotatab_post_mkd(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2652:MODRET quotatab_post_mkd_err(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:2662:MODRET quotatab_post_pass(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3075:MODRET quotatab_pre_retr(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3164:MODRET quotatab_post_retr(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3227:MODRET quotatab_post_retr_err(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3303:MODRET quotatab_pre_rmd(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3324:MODRET quotatab_post_rmd(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3345:MODRET quotatab_pre_rnto(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3374:MODRET quotatab_post_rnto(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3397:MODRET quotatab_pre_stor(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3504:MODRET quotatab_post_stor(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3673:MODRET quotatab_post_stor_err(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3849:MODRET quotatab_pre_site(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3856:    cmd_rec *copy_cmd;
+./contrib/mod_quotatab.c:3864:    cmd_rec *copy_cmd;
+./contrib/mod_quotatab.c:3891:MODRET quotatab_site(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:3995:MODRET quotatab_post_site(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:4002:    cmd_rec *copy_cmd;
+./contrib/mod_quotatab.c:4010:    cmd_rec *copy_cmd;
+./contrib/mod_quotatab.c:4037:MODRET quotatab_post_site_err(cmd_rec *cmd) {
+./contrib/mod_quotatab.c:4044:    cmd_rec *copy_cmd;
+./contrib/mod_quotatab.c:4052:    cmd_rec *copy_cmd;
+./contrib/mod_sftp_sql.c:54:static cmd_rec *sqlstore_cmd_create(pool *parent_pool, int argc, ...) {
+./contrib/mod_sftp_sql.c:56:  cmd_rec *cmd = NULL;
+./contrib/mod_sftp_sql.c:61:  cmd = (cmd_rec *) pcalloc(cmd_pool, sizeof(cmd_rec));
+./contrib/mod_sftp_sql.c:413:  cmd_rec *cmd;
+./contrib/mod_sftp_sql.c:517:  cmd_rec *sql_cmd;
+./contrib/mod_sftp_sql.c:609:  cmd_rec *sql_cmd;
+./contrib/mod_ifversion.c:345:MODRET start_ifversion(cmd_rec *cmd) {
+./contrib/mod_ifversion.c:475:MODRET end_ifversion(cmd_rec *cmd) {
+./contrib/mod_quotatab_sql.c:35:static cmd_rec *sqltab_cmd_create(pool *parent_pool, int argc, ...) {
+./contrib/mod_quotatab_sql.c:37:  cmd_rec *cmd = NULL;
+./contrib/mod_quotatab_sql.c:42:  cmd = (cmd_rec *) pcalloc(cmd_pool, sizeof(cmd_rec));
+./contrib/mod_quotatab_sql.c:61:  cmd_rec *cmd;
+./contrib/mod_quotatab_sql.c:98:  cmd_rec *sql_cmd = NULL;
+./contrib/mod_quotatab_sql.c:205:  cmd_rec *sql_cmd = NULL;
+./contrib/mod_quotatab_sql.c:447:  cmd_rec *sql_cmd = NULL;
+./contrib/mod_wrap.c:44:static char *wrap_get_user_table(cmd_rec *, char *, char *);
+./contrib/mod_wrap.c:103:static char *wrap_get_user_table(cmd_rec *cmd, char *user,
+./contrib/mod_wrap.c:308:MODRET set_tcpaccessfiles(cmd_rec *cmd) {
+./contrib/mod_wrap.c:401:MODRET set_tcpgroupaccessfiles(cmd_rec *cmd) {
+./contrib/mod_wrap.c:517:MODRET set_tcpuseraccessfiles(cmd_rec *cmd) {
+./contrib/mod_wrap.c:637:MODRET set_tcpaccesssysloglevels(cmd_rec *cmd) {
+./contrib/mod_wrap.c:714:MODRET set_tcpservicename(cmd_rec *cmd) {
+./contrib/mod_wrap.c:725:MODRET wrap_handle_request(cmd_rec *cmd) {
+./contrib/mod_geoip.c:990:MODRET set_geoipfilter(cmd_rec *cmd) {
+./contrib/mod_geoip.c:1043:MODRET set_geoipengine(cmd_rec *cmd) {
+./contrib/mod_geoip.c:1062:MODRET set_geoiplog(cmd_rec *cmd) {
+./contrib/mod_geoip.c:1071:MODRET set_geoippolicy(cmd_rec *cmd) {
+./contrib/mod_geoip.c:1097:MODRET set_geoiptable(cmd_rec *cmd) {
+./contrib/mod_geoip.c:1152:MODRET geoip_post_pass(cmd_rec *cmd) {
+./contrib/mod_log_forensic.c:641:MODRET set_forensiclogbuffersize(cmd_rec *cmd) {
+./contrib/mod_log_forensic.c:667:MODRET set_forensiclogcapture(cmd_rec *cmd) {
+./contrib/mod_log_forensic.c:727:MODRET set_forensiclogcriteria(cmd_rec *cmd) {
+./contrib/mod_log_forensic.c:769:MODRET set_forensiclogengine(cmd_rec *cmd) {
+./contrib/mod_log_forensic.c:789:MODRET set_forensiclogfile(cmd_rec *cmd) {
+./contrib/mod_log_forensic.c:804:MODRET forensic_pass_err(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:65:MODRET cmd_close(cmd_rec *cmd);
+./contrib/mod_sql_postgres.c:170:/* _sql_check_cmd: tests to make sure the cmd_rec is valid and is 
+./contrib/mod_sql_postgres.c:174:static void _sql_check_cmd(cmd_rec *cmd, char *msg) {
+./contrib/mod_sql_postgres.c:178:      ": '%s' was passed an invalid cmd_rec (internal bug); shutting down",
+./contrib/mod_sql_postgres.c:180:    sql_log(DEBUG_WARN, "'%s' was passed an invalid cmd_rec (internal bug); "
+./contrib/mod_sql_postgres.c:195:  cmd_rec *cmd = NULL;
+./contrib/mod_sql_postgres.c:217:static modret_t *_build_error(cmd_rec *cmd, db_conn_t *conn) {
+./contrib/mod_sql_postgres.c:231:static modret_t *_build_data(cmd_rec *cmd, db_conn_t *conn) {
+./contrib/mod_sql_postgres.c:360:MODRET cmd_open(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:558:MODRET cmd_close(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:637:MODRET cmd_defineconnection(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:761:static modret_t *cmd_exit(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:770:      cmd_rec *close_cmd = _sql_make_cmd(conn_pool, 2, entry->name, "1");
+./contrib/mod_sql_postgres.c:827:MODRET cmd_select(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:834:  cmd_rec *close_cmd;
+./contrib/mod_sql_postgres.c:966:MODRET cmd_insert(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:972:  cmd_rec *close_cmd;
+./contrib/mod_sql_postgres.c:1069:MODRET cmd_update(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:1075:  cmd_rec *close_cmd;
+./contrib/mod_sql_postgres.c:1161:MODRET cmd_procedure(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:1198:MODRET cmd_query(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:1204:  cmd_rec *close_cmd;
+./contrib/mod_sql_postgres.c:1305:MODRET cmd_escapestring(cmd_rec * cmd) {
+./contrib/mod_sql_postgres.c:1311:  cmd_rec *close_cmd;
+./contrib/mod_sql_postgres.c:1388:MODRET cmd_checkauth(cmd_rec * cmd) {
+./contrib/mod_sql_postgres.c:1426: *  do not depend on any other portion of the cmd_rec to be useful in any way.
+./contrib/mod_sql_postgres.c:1438:MODRET cmd_identify(cmd_rec * cmd) {
+./contrib/mod_sql_postgres.c:1455:MODRET cmd_prepare(cmd_rec *cmd) {
+./contrib/mod_sql_postgres.c:1470:MODRET cmd_cleanup(cmd_rec *cmd) {
+./contrib/mod_dnsbl/mod_dnsbl.c:191:MODRET set_dnsbldomain(cmd_rec *cmd) {
+./contrib/mod_dnsbl/mod_dnsbl.c:210:MODRET set_dnsblengine(cmd_rec *cmd) {
+./contrib/mod_dnsbl/mod_dnsbl.c:229:MODRET set_dnsbllog(cmd_rec *cmd) {
+./contrib/mod_dnsbl/mod_dnsbl.c:242:MODRET set_dnsblpolicy(cmd_rec *cmd) {
+./contrib/mod_exec.c:87:static char *exec_subst_var(pool *, char *, cmd_rec *);
+./contrib/mod_exec.c:163:static unsigned char exec_match_cmd(cmd_rec *cmd, array_header *cmd_array) {
+./contrib/mod_exec.c:227:static char **exec_prepare_environ(pool *env_pool, cmd_rec *cmd) {
+./contrib/mod_exec.c:418:static int exec_ssystem(cmd_rec *cmd, config_rec *c, int flags) {
+./contrib/mod_exec.c:900:static char *exec_subst_var(pool *tmp_pool, char *varstr, cmd_rec *cmd) {
+./contrib/mod_exec.c:1188:MODRET exec_pre_cmd(cmd_rec *cmd) {
+./contrib/mod_exec.c:1247:MODRET exec_post_cmd(cmd_rec *cmd) {
+./contrib/mod_exec.c:1305:MODRET exec_post_cmd_err(cmd_rec *cmd) {
+./contrib/mod_exec.c:1369:MODRET set_execbeforecommand(cmd_rec *cmd) {
+./contrib/mod_exec.c:1400:MODRET set_execengine(cmd_rec *cmd) {
+./contrib/mod_exec.c:1423:MODRET set_execenviron(cmd_rec *cmd) {
+./contrib/mod_exec.c:1441:MODRET set_execlog(cmd_rec *cmd) {
+./contrib/mod_exec.c:1450:MODRET set_execoncommand(cmd_rec *cmd) {
+./contrib/mod_exec.c:1481:MODRET set_execonconnect(cmd_rec *cmd) {
+./contrib/mod_exec.c:1510:MODRET set_execonerror(cmd_rec *cmd) {
+./contrib/mod_exec.c:1541:MODRET set_execonevent(cmd_rec *cmd) {
+./contrib/mod_exec.c:1601:MODRET set_execonexit(cmd_rec *cmd) {
+./contrib/mod_exec.c:1629:MODRET set_execonrestart(cmd_rec *cmd) {
+./contrib/mod_exec.c:1657:MODRET set_execoptions(cmd_rec *cmd) {
+./contrib/mod_exec.c:1695:MODRET set_exectimeout(cmd_rec *cmd) {
+./contrib/mod_load/mod_load.c:964:MODRET set_maxload(cmd_rec *cmd) {
+./contrib/mod_load/mod_load.c.in:965:MODRET set_maxload(cmd_rec *cmd) {
+./contrib/mod_ban.c:2083:MODRET ban_pre_pass(cmd_rec *cmd) {
+./contrib/mod_ban.c:2109:MODRET ban_post_pass(cmd_rec *cmd) {
+./contrib/mod_ban.c:2128:MODRET set_bancache(cmd_rec *cmd) {
+./contrib/mod_ban.c:2152:MODRET set_bancacheoptions(cmd_rec *cmd) {
+./contrib/mod_ban.c:2181:MODRET set_banctrlsacls(cmd_rec *cmd) {
+./contrib/mod_ban.c:2212:MODRET set_banengine(cmd_rec *cmd) {
+./contrib/mod_ban.c:2260:MODRET set_banlog(cmd_rec *cmd) {
+./contrib/mod_ban.c:2274:MODRET set_banmessage(cmd_rec *cmd) {
+./contrib/mod_ban.c:2283:MODRET set_banonevent(cmd_rec *cmd) {
+./contrib/mod_ban.c:2430:MODRET set_bantable(cmd_rec *cmd) {
+./contrib/mod_deflate.c:723:MODRET set_deflateengine(cmd_rec *cmd) {
+./contrib/mod_deflate.c:742:MODRET set_deflatelog(cmd_rec *cmd) {
+./contrib/mod_deflate.c:757:MODRET deflate_opts(cmd_rec *cmd) {
+./contrib/mod_deflate.c:823:MODRET deflate_mode(cmd_rec *cmd) {
+./contrib/mod_shaper.c:1774:MODRET set_shaperall(cmd_rec *cmd) {
+./contrib/mod_shaper.c:1875:MODRET set_shaperctrlsacls(cmd_rec *cmd) {
+./contrib/mod_shaper.c:1903:MODRET set_shaperengine(cmd_rec *cmd) {
+./contrib/mod_shaper.c:1923:MODRET set_shaperlog(cmd_rec *cmd) {
+./contrib/mod_shaper.c:1939:MODRET set_shapersession(cmd_rec *cmd) {
+./contrib/mod_shaper.c:2003:MODRET set_shapertable(cmd_rec *cmd) {
+./contrib/mod_shaper.c:2017:MODRET shaper_pre_pass(cmd_rec *cmd) {
+./contrib/mod_shaper.c:2037:MODRET shaper_post_pass(cmd_rec *cmd) {
+./contrib/mod_shaper.c:2095:MODRET shaper_post_err_pass(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1389:MODRET set_wrapmsg(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1402:MODRET set_wrapengine(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1421:MODRET set_wrapgrouptables(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1490:MODRET set_wraplog(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1500:MODRET set_wrapoptions(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1532:MODRET set_wrapservicename(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1541:MODRET set_wraptables(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1584:MODRET set_wrapusertables(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1655:MODRET wrap2_pre_pass(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1848:MODRET wrap2_post_pass(cmd_rec *cmd) {
+./contrib/mod_wrap2/mod_wrap2.c:1870:MODRET wrap2_post_pass_err(cmd_rec *cmd) {
+./contrib/mod_unique_id.c:61:MODRET set_uniqueidengine(cmd_rec *cmd) {
+./contrib/mod_readme.c:116:MODRET readme_post_cmd(cmd_rec *cmd) {
+./contrib/mod_readme.c:138:MODRET set_displayreadme(cmd_rec *cmd) {
+./contrib/mod_quotatab_radius.c:48:  cmd_rec *cmd = NULL;
+./contrib/mod_ctrls_admin.c:1216:MODRET set_adminctrlsacls(cmd_rec *cmd) {
+./contrib/mod_ctrls_admin.c:1247:MODRET set_adminctrlsengine(cmd_rec *cmd) {
+./contrib/mod_tls.c:7497:MODRET tls_authenticate(cmd_rec *cmd) {
+./contrib/mod_tls.c:7553:MODRET tls_auth_check(cmd_rec *cmd) {
+./contrib/mod_tls.c:7605:MODRET tls_any(cmd_rec *cmd) {
+./contrib/mod_tls.c:7720:MODRET tls_auth(cmd_rec *cmd) {
+./contrib/mod_tls.c:7831:MODRET tls_ccc(cmd_rec *cmd) {
+./contrib/mod_tls.c:7884:MODRET tls_pbsz(cmd_rec *cmd) {
+./contrib/mod_tls.c:7911:MODRET tls_post_host(cmd_rec *cmd) {
+./contrib/mod_tls.c:7939:MODRET tls_post_pass(cmd_rec *cmd) {
+./contrib/mod_tls.c:8029:MODRET tls_prot(cmd_rec *cmd) {
+./contrib/mod_tls.c:8121:MODRET tls_sscn(cmd_rec *cmd) {
+./contrib/mod_tls.c:8184:MODRET set_tlscacertfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8208:MODRET set_tlscacertpath(cmd_rec *cmd) {
+./contrib/mod_tls.c:8231:MODRET set_tlscacrlfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8255:MODRET set_tlscacrlpath(cmd_rec *cmd) {
+./contrib/mod_tls.c:8278:MODRET set_tlscertchain(cmd_rec *cmd) {
+./contrib/mod_tls.c:8302:MODRET set_tlsciphersuite(cmd_rec *cmd) {
+./contrib/mod_tls.c:8311:MODRET set_tlsctrlsacls(cmd_rec *cmd) {
+./contrib/mod_tls.c:8347:MODRET set_tlscryptodevice(cmd_rec *cmd) {
+./contrib/mod_tls.c:8364:MODRET set_tlsdhparamfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8388:MODRET set_tlsdsacertfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8412:MODRET set_tlsdsakeyfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8436:MODRET set_tlseccertfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8466:MODRET set_tlseckeyfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8496:MODRET set_tlsengine(cmd_rec *cmd) {
+./contrib/mod_tls.c:8515:MODRET set_tlslog(cmd_rec *cmd) {
+./contrib/mod_tls.c:8524:MODRET set_tlsmasqaddr(cmd_rec *cmd) {
+./contrib/mod_tls.c:8549:MODRET set_tlsoptions(cmd_rec *cmd) {
+./contrib/mod_tls.c:8627:MODRET set_tlspassphraseprovider(cmd_rec *cmd) {
+./contrib/mod_tls.c:8650:MODRET set_tlspkcs12file(cmd_rec *cmd) {
+./contrib/mod_tls.c:8674:MODRET set_tlsprotocol(cmd_rec *cmd) {
+./contrib/mod_tls.c:8724:MODRET set_tlsrandseed(cmd_rec *cmd) {
+./contrib/mod_tls.c:8733:MODRET set_tlsrenegotiate(cmd_rec *cmd) {
+./contrib/mod_tls.c:8826:MODRET set_tlsrequired(cmd_rec *cmd) {
+./contrib/mod_tls.c:8895:MODRET set_tlsrsacertfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8919:MODRET set_tlsrsakeyfile(cmd_rec *cmd) {
+./contrib/mod_tls.c:8943:MODRET set_tlsservercipherpreference(cmd_rec *cmd) {
+./contrib/mod_tls.c:8972:MODRET set_tlssessioncache(cmd_rec *cmd) {
+./contrib/mod_tls.c:9043:MODRET set_tlstimeouthandshake(cmd_rec *cmd) {
+./contrib/mod_tls.c:9063:MODRET set_tlsusername(cmd_rec *cmd) {
+./contrib/mod_tls.c:9091:MODRET set_tlsverifyclient(cmd_rec *cmd) {
+./contrib/mod_tls.c:9110:MODRET set_tlsverifydepth(cmd_rec *cmd) {
+./contrib/mod_tls.c:9129:MODRET set_tlsverifyorder(cmd_rec *cmd) {
+./contrib/mod_tls.c:9175:MODRET set_tlsverifyserver(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:82:static cmd_rec *sql_passwd_cmd_create(pool *parent_pool, int argc, ...) {
+./contrib/mod_sql_passwd.c:84:  cmd_rec *cmd = NULL;
+./contrib/mod_sql_passwd.c:89:  cmd = (cmd_rec *) pcalloc(cmd_pool, sizeof(cmd_rec));
+./contrib/mod_sql_passwd.c:108:  cmd_rec *cmd;
+./contrib/mod_sql_passwd.c:334:static modret_t *sql_passwd_auth(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql_passwd.c:513:static modret_t *sql_passwd_md5(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql_passwd.c:518:static modret_t *sql_passwd_sha1(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql_passwd.c:523:static modret_t *sql_passwd_sha256(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql_passwd.c:528:static modret_t *sql_passwd_sha512(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql_passwd.c:533:static modret_t *sql_passwd_pbkdf2(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql_passwd.c:620:MODRET sql_passwd_pre_pass(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:643:      cmd_rec *sql_cmd;
+./contrib/mod_sql_passwd.c:749:      cmd_rec *sql_cmd;
+./contrib/mod_sql_passwd.c:811:MODRET set_sqlpasswdencoding(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:840:MODRET set_sqlpasswdengine(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:859:MODRET set_sqlpasswdoptions(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:899:MODRET set_sqlpasswdpbkdf2(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:960:MODRET set_sqlpasswdrounds(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:981:MODRET set_sqlpasswdsaltfile(cmd_rec *cmd) {
+./contrib/mod_sql_passwd.c:1017:MODRET set_sqlpasswdusersalt(cmd_rec *cmd) {
+./contrib/mod_ratio.c:115:static cmd_rec *
+./contrib/mod_ratio.c:119:  cmd_rec *c;
+./contrib/mod_ratio.c:124:  c = pcalloc(newpool, sizeof(cmd_rec));
+./contrib/mod_ratio.c:142:_dispatch_ratio (cmd_rec * cmd, char *match)
+./contrib/mod_ratio.c:164:_dispatch (cmd_rec * cmd, char *match)
+./contrib/mod_ratio.c:166:  cmd_rec *cr;
+./contrib/mod_ratio.c:267:MODRET calc_ratios (cmd_rec * cmd)
+./contrib/mod_ratio.c:392:log_ratios (cmd_rec * cmd)
+./contrib/mod_ratio.c:526:pre_cmd_retr (cmd_rec * cmd)
+./contrib/mod_ratio.c:571:MODRET ratio_log_pass(cmd_rec *cmd) {
+./contrib/mod_ratio.c:591:pre_cmd (cmd_rec * cmd)
+./contrib/mod_ratio.c:604:cmd_cwd (cmd_rec * cmd)
+./contrib/mod_ratio.c:622:MODRET ratio_post_cmd(cmd_rec *cmd) {
+./contrib/mod_ratio.c:798:cmd_site (cmd_rec * cmd)
+./contrib/mod_ratio.c:835:MODRET ratio_post_retr(cmd_rec *cmd) {
+./contrib/mod_ratio.c:848:MODRET ratio_post_stor(cmd_rec *cmd) {
+./contrib/mod_ratio.c:862:cmd_user (cmd_rec * cmd)
+./contrib/mod_ratio.c:872:add_ratiodata (cmd_rec * cmd)
+./contrib/mod_ratio.c:883:MODRET set_ratios(cmd_rec *cmd) {
+./contrib/mod_ratio.c:904:add_saveratios (cmd_rec * cmd)
+./contrib/mod_ratio.c:923:add_str (cmd_rec * cmd)
+./contrib/mod_sql_mysql.c:151:MODRET cmd_close(cmd_rec *cmd);
+./contrib/mod_sql_mysql.c:266:/* _sql_check_cmd: tests to make sure the cmd_rec is valid and is 
+./contrib/mod_sql_mysql.c:270:static void _sql_check_cmd(cmd_rec *cmd, char *msg) {
+./contrib/mod_sql_mysql.c:274:      ": '%s' was passed an invalid cmd_rec (internal bug); shutting down",
+./contrib/mod_sql_mysql.c:276:    sql_log(DEBUG_WARN, "'%s' was passed an invalid cmd_rec (internal bug); "
+./contrib/mod_sql_mysql.c:291:  cmd_rec *cmd = NULL;
+./contrib/mod_sql_mysql.c:313:static modret_t *_build_error(cmd_rec *cmd, db_conn_t *conn) {
+./contrib/mod_sql_mysql.c:330:static modret_t *_build_data(cmd_rec *cmd, db_conn_t *conn) {
+./contrib/mod_sql_mysql.c:413:MODRET cmd_open(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:644:MODRET cmd_close(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:722:MODRET cmd_defineconnection(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:858:static modret_t *cmd_exit(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:867:      cmd_rec *close_cmd = _sql_make_cmd(conn_pool, 2, entry->name, "1");
+./contrib/mod_sql_mysql.c:924:MODRET cmd_select(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:931:  cmd_rec *close_cmd;
+./contrib/mod_sql_mysql.c:1062:MODRET cmd_insert(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:1068:  cmd_rec *close_cmd;
+./contrib/mod_sql_mysql.c:1160:MODRET cmd_update(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:1166:  cmd_rec *close_cmd;
+./contrib/mod_sql_mysql.c:1246:MODRET cmd_procedure(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:1283:MODRET cmd_query(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:1289:  cmd_rec *close_cmd;
+./contrib/mod_sql_mysql.c:1383:MODRET cmd_escapestring(cmd_rec * cmd) {
+./contrib/mod_sql_mysql.c:1389:  cmd_rec *close_cmd;
+./contrib/mod_sql_mysql.c:1460:MODRET cmd_checkauth(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:1564: *  do not depend on any other portion of the cmd_rec to be useful in any way.
+./contrib/mod_sql_mysql.c:1576:MODRET cmd_identify(cmd_rec * cmd) {
+./contrib/mod_sql_mysql.c:1602:MODRET cmd_prepare(cmd_rec *cmd) {
+./contrib/mod_sql_mysql.c:1627:MODRET cmd_cleanup(cmd_rec *cmd) {
+./contrib/mod_ifsession.c:352:MODRET start_ifctxt(cmd_rec *cmd) {
+./contrib/mod_ifsession.c:492:MODRET end_ifctxt(cmd_rec *cmd) {
+./contrib/mod_ifsession.c:527:MODRET ifsess_pre_pass(cmd_rec *cmd) {
+./contrib/mod_ifsession.c:735:MODRET ifsess_post_pass(cmd_rec *cmd) {
+./contrib/mod_sql.c:118:static char *sql_prepare_where(int, cmd_rec *, int, ...);
+./contrib/mod_sql.c:121:static modret_t *process_named_query(cmd_rec *cmd, char *name, int flags);
+./contrib/mod_sql.c:122:static const char *resolve_long_tag(cmd_rec *, char *);
+./contrib/mod_sql.c:123:static int resolve_numeric_tag(cmd_rec *, char *);
+./contrib/mod_sql.c:124:static char *resolve_short_tag(cmd_rec *, char);
+./contrib/mod_sql.c:129:MODRET cmd_getgrent(cmd_rec *);
+./contrib/mod_sql.c:130:MODRET cmd_setgrent(cmd_rec *);
+./contrib/mod_sql.c:132:MODRET sql_lookup(cmd_rec *);
+./contrib/mod_sql.c:433:cmd_rec *_sql_make_cmd(pool *p, int argc, ...) {
+./contrib/mod_sql.c:436:  cmd_rec *cmd = NULL;
+./contrib/mod_sql.c:440:  cmd = pcalloc(newpool, sizeof(cmd_rec));
+./contrib/mod_sql.c:490:static modret_t *_sql_dispatch(cmd_rec *cmd, char *cmdname) {
+./contrib/mod_sql.c:688:static modret_t *sql_auth_crypt(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql.c:709:static modret_t *sql_auth_plaintext(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql.c:723:static modret_t *sql_auth_empty(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql.c:733:static modret_t *sql_auth_backend(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql.c:747:static modret_t *sql_auth_openssl(cmd_rec *cmd, const char *plaintext,
+./contrib/mod_sql.c:816:  modret_t *(*cb)(cmd_rec *, const char *, const char *); 
+./contrib/mod_sql.c:837:    modret_t *(*cb)(cmd_rec *, const char *, const char *)) {
+./contrib/mod_sql.c:918:static char *_sql_realuser(cmd_rec *cmd) {
+./contrib/mod_sql.c:937:  cmd_rec *cmd = NULL;
+./contrib/mod_sql.c:964:static char *sql_prepare_where(int flags, cmd_rec *cmd, int cnt, ...) {
+./contrib/mod_sql.c:1262:static struct passwd *_sql_addpasswd(cmd_rec *cmd, char *username,
+./contrib/mod_sql.c:1326:static int sql_getuserprimarykey(cmd_rec *cmd, const char *username) {
+./contrib/mod_sql.c:1421:static int sql_getgroupprimarykey(cmd_rec *cmd, const char *groupname) {
+./contrib/mod_sql.c:1516:static struct passwd *sql_getpasswd(cmd_rec *cmd, struct passwd *p) {
+./contrib/mod_sql.c:1785:static struct group *_sql_addgroup(cmd_rec *cmd, char *groupname, gid_t gid,
+./contrib/mod_sql.c:1842:static struct group *sql_getgroup(cmd_rec *cmd, struct group *g) {
+./contrib/mod_sql.c:2034:static void _setstats(cmd_rec *cmd, int fstor, int fretr, int bstor,
+./contrib/mod_sql.c:2061:static int sql_getgroups(cmd_rec *cmd) {
+./contrib/mod_sql.c:2085:   * before passing this cmd_rec on, lest we try to resolve some variable
+./contrib/mod_sql.c:2086:   * like %r which will assume that all of the cmd_rec args are strings, as
+./contrib/mod_sql.c:2238:MODRET sql_pre_dele(cmd_rec *cmd) {
+./contrib/mod_sql.c:2267:MODRET sql_pre_pass(cmd_rec *cmd) {
+./contrib/mod_sql.c:2304:MODRET sql_post_pass(cmd_rec *cmd) {
+./contrib/mod_sql.c:2315:MODRET sql_post_stor(cmd_rec *cmd) {
+./contrib/mod_sql.c:2329:MODRET sql_post_retr(cmd_rec *cmd) {
+./contrib/mod_sql.c:2343:static const char *resolve_long_tag(cmd_rec *cmd, char *tag) {
+./contrib/mod_sql.c:2714:static int resolve_numeric_tag(cmd_rec *cmd, char *tag) {
+./contrib/mod_sql.c:2728:static char *resolve_short_tag(cmd_rec *cmd, char tag) {
+./contrib/mod_sql.c:3227:static char *named_query_type(cmd_rec *cmd, char *name) {
+./contrib/mod_sql.c:3242:static modret_t *process_named_query(cmd_rec *cmd, char *name, int flags) {
+./contrib/mod_sql.c:3416:MODRET process_sqllog(cmd_rec *cmd, config_rec *c, const char *label,
+./contrib/mod_sql.c:3450:  cmd_rec *cmd = NULL;
+./contrib/mod_sql.c:3458:  /* Need to create fake cmd_rec for dispatching, since we need
+./contrib/mod_sql.c:3459:   * cmd->pool, cmd->tmp_pool.  The cmd_rec MUST have
+./contrib/mod_sql.c:3495:MODRET log_master(cmd_rec *cmd) {
+./contrib/mod_sql.c:3570:MODRET err_master(cmd_rec *cmd) {
+./contrib/mod_sql.c:3645:MODRET info_master(cmd_rec *cmd) {
+./contrib/mod_sql.c:3942:MODRET errinfo_master(cmd_rec *cmd) {
+./contrib/mod_sql.c:4282:MODRET sql_cleanup(cmd_rec *cmd) {
+./contrib/mod_sql.c:4297:MODRET sql_closeconn(cmd_rec *cmd) {
+./contrib/mod_sql.c:4307:MODRET sql_defineconn(cmd_rec *cmd) {
+./contrib/mod_sql.c:4317:MODRET sql_load_backend(cmd_rec *cmd) {
+./contrib/mod_sql.c:4335:MODRET sql_openconn(cmd_rec *cmd) {
+./contrib/mod_sql.c:4345:MODRET sql_prepare(cmd_rec *cmd) {
+./contrib/mod_sql.c:4355:MODRET sql_select(cmd_rec *cmd) {
+./contrib/mod_sql.c:4366: * Third party module must pass a legitimate cmd_rec (including tmp_pool), 
+./contrib/mod_sql.c:4367: * and the cmd_rec must have only one argument: the name of a SQLNamedQuery.
+./contrib/mod_sql.c:4382:MODRET sql_lookup(cmd_rec *cmd) {
+./contrib/mod_sql.c:4436:MODRET sql_change(cmd_rec *cmd) {
+./contrib/mod_sql.c:4454:    /* fixup the cmd_rec */
+./contrib/mod_sql.c:4470:MODRET sql_escapestr(cmd_rec *cmd) {
+./contrib/mod_sql.c:4492:MODRET cmd_setpwent(cmd_rec *cmd) {
+./contrib/mod_sql.c:4678:MODRET cmd_getpwent(cmd_rec *cmd) {
+./contrib/mod_sql.c:4715:MODRET cmd_endpwent(cmd_rec *cmd) {
+./contrib/mod_sql.c:4728:MODRET cmd_setgrent(cmd_rec *cmd) {
+./contrib/mod_sql.c:4873:MODRET cmd_getgrent(cmd_rec *cmd) {
+./contrib/mod_sql.c:4910:MODRET cmd_endgrent(cmd_rec *cmd) {
+./contrib/mod_sql.c:4923:MODRET cmd_getpwnam(cmd_rec *cmd) {
+./contrib/mod_sql.c:4948:MODRET cmd_getpwuid(cmd_rec *cmd) {
+./contrib/mod_sql.c:4973:MODRET cmd_getgrnam(cmd_rec *cmd) {
+./contrib/mod_sql.c:4997:MODRET cmd_getgrgid(cmd_rec *cmd) {
+./contrib/mod_sql.c:5021:MODRET cmd_auth(cmd_rec *cmd) {
+./contrib/mod_sql.c:5059:MODRET cmd_check(cmd_rec *cmd) {
+./contrib/mod_sql.c:5147:MODRET cmd_uid2name(cmd_rec *cmd) {
+./contrib/mod_sql.c:5193:MODRET cmd_gid2name(cmd_rec *cmd) {
+./contrib/mod_sql.c:5231:MODRET cmd_name2uid(cmd_rec *cmd) {
+./contrib/mod_sql.c:5264:MODRET cmd_name2gid(cmd_rec *cmd) {
+./contrib/mod_sql.c:5288:MODRET cmd_getgroups(cmd_rec *cmd) {
+./contrib/mod_sql.c:5308:MODRET cmd_getstats(cmd_rec *cmd) {
+./contrib/mod_sql.c:5346:MODRET cmd_getratio(cmd_rec *cmd) {
+./contrib/mod_sql.c:5389:MODRET set_sqlratiostats(cmd_rec * cmd)
+./contrib/mod_sql.c:5417:MODRET set_sqlnegativecache(cmd_rec *cmd) {
+./contrib/mod_sql.c:5436:MODRET set_sqloptions(cmd_rec *cmd) {
+./contrib/mod_sql.c:5473:MODRET set_sqlratios(cmd_rec * cmd)
+./contrib/mod_sql.c:5501:MODRET add_virtualstr(char *name, cmd_rec *cmd) {
+./contrib/mod_sql.c:5512:MODRET set_sqluserinfo(cmd_rec *cmd) {
+./contrib/mod_sql.c:5589:MODRET set_sqluserprimarykey(cmd_rec *cmd) {
+./contrib/mod_sql.c:5593:MODRET set_sqluserwhereclause(cmd_rec *cmd) {
+./contrib/mod_sql.c:5601:MODRET set_sqlgroupinfo(cmd_rec *cmd) {
+./contrib/mod_sql.c:5676:MODRET set_sqlgroupprimarykey(cmd_rec *cmd) {
+./contrib/mod_sql.c:5680:MODRET set_sqlgroupwhereclause(cmd_rec *cmd) {
+./contrib/mod_sql.c:5684:MODRET set_sqldefaulthomedir(cmd_rec *cmd) {
+./contrib/mod_sql.c:5689:MODRET set_sqllog(cmd_rec *cmd) {
+./contrib/mod_sql.c:5740:MODRET set_sqllogfile(cmd_rec *cmd) {
+./contrib/mod_sql.c:5749:MODRET set_sqllogonevent(cmd_rec *cmd) {
+./contrib/mod_sql.c:5841:MODRET set_sqlnamedconnectinfo(cmd_rec *cmd) {
+./contrib/mod_sql.c:5895:MODRET set_sqlnamedquery(cmd_rec *cmd) {
+./contrib/mod_sql.c:5967:MODRET set_sqlshowinfo(cmd_rec *cmd) {
+./contrib/mod_sql.c:6003:MODRET set_sqlauthenticate(cmd_rec *cmd) {
+./contrib/mod_sql.c:6168:MODRET set_sqlconnectinfo(cmd_rec *cmd) {
+./contrib/mod_sql.c:6203:MODRET set_sqlengine(cmd_rec *cmd) {
+./contrib/mod_sql.c:6239:MODRET set_sqlauthtypes(cmd_rec *cmd) {
+./contrib/mod_sql.c:6272:MODRET set_sqlbackend(cmd_rec *cmd) {
+./contrib/mod_sql.c:6280:MODRET set_sqlminid(cmd_rec *cmd) {
+./contrib/mod_sql.c:6306:MODRET set_sqlminuseruid(cmd_rec *cmd) {
+./contrib/mod_sql.c:6332:MODRET set_sqlminusergid(cmd_rec *cmd) {
+./contrib/mod_sql.c:6358:MODRET set_sqldefaultuid(cmd_rec *cmd) {
+./contrib/mod_sql.c:6386:MODRET set_sqldefaultgid(cmd_rec *cmd) {
+./contrib/mod_sql.c:6431:        cmd_rec *cmd;
+./contrib/mod_sql.c:6447:  cmd_rec *cmd;
+./contrib/mod_sql.c:6554:  cmd_rec *cmd = NULL;
+./contrib/mod_sql_sqlite.c:73:MODRET sql_sqlite_close(cmd_rec *);
+./contrib/mod_sql_sqlite.c:116:      cmd_rec *cmd = NULL;
+./contrib/mod_sql_sqlite.c:141:  cmd_rec *cmd = n;
+./contrib/mod_sql_sqlite.c:159:static int exec_stmt(cmd_rec *cmd, db_conn_t *conn, char *stmt, char **errstr) {
+./contrib/mod_sql_sqlite.c:208:static int query_start(cmd_rec *cmd, db_conn_t *conn, int flags,
+./contrib/mod_sql_sqlite.c:229:static int query_run(cmd_rec *cmd, db_conn_t *conn, char *query,
+./contrib/mod_sql_sqlite.c:234:static int query_finish(cmd_rec *cmd, db_conn_t *conn, char **errstr) {
+./contrib/mod_sql_sqlite.c:238:static modret_t *sql_sqlite_get_data(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:264:   * same cmd_rec, and will be recovered when the cmd_rec is destroyed.
+./contrib/mod_sql_sqlite.c:272:MODRET sql_sqlite_open(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:374:MODRET sql_sqlite_close(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:436:MODRET sql_sqlite_cleanup(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:444:MODRET sql_sqlite_def_conn(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:505:MODRET sql_sqlite_exit(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:514:      cmd_rec *tmp = pr_cmd_alloc(conn_pool, 2, entry->name, "1");
+./contrib/mod_sql_sqlite.c:525:MODRET sql_sqlite_select(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:530:  cmd_rec *close_cmd;
+./contrib/mod_sql_sqlite.c:632:MODRET sql_sqlite_insert(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:637:  cmd_rec *close_cmd;
+./contrib/mod_sql_sqlite.c:708:   * same cmd_rec, and will be recovered when the cmd_rec is destroyed.
+./contrib/mod_sql_sqlite.c:722:MODRET sql_sqlite_update(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:727:  cmd_rec *close_cmd;
+./contrib/mod_sql_sqlite.c:801:   * same cmd_rec, and will be recovered when the cmd_rec is destroyed.
+./contrib/mod_sql_sqlite.c:815:MODRET sql_sqlite_prepare(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:830:MODRET sql_sqlite_procedure(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:843:MODRET sql_sqlite_query(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:848:  cmd_rec *close_cmd;
+./contrib/mod_sql_sqlite.c:920:MODRET sql_sqlite_quote(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:926:  cmd_rec *close_cmd;
+./contrib/mod_sql_sqlite.c:963:MODRET sql_sqlite_checkauth(cmd_rec *cmd) {
+./contrib/mod_sql_sqlite.c:980:MODRET sql_sqlite_identify(cmd_rec * cmd) {
+./contrib/mod_wrap2_sql.c:39:static cmd_rec *sql_cmd_create(pool *parent_pool, int argc, ...) {
+./contrib/mod_wrap2_sql.c:41:  cmd_rec *cmd = NULL;
+./contrib/mod_wrap2_sql.c:46:  cmd = (cmd_rec *) pcalloc(cmd_pool, sizeof(cmd_rec));
+./contrib/mod_wrap2_sql.c:72:  cmd_rec *sql_cmd = NULL;
+./contrib/mod_wrap2_sql.c:190:  cmd_rec *sql_cmd = NULL;
+./contrib/mod_sftp_pam.c:97:MODRET sftppam_auth(cmd_rec *);
+./contrib/mod_sftp_pam.c:581:MODRET sftppam_auth(cmd_rec *cmd) {
+./contrib/mod_sftp_pam.c:602:MODRET set_sftppamengine(cmd_rec *cmd) {
+./contrib/mod_sftp_pam.c:622:MODRET set_sftppamoptions(cmd_rec *cmd) {
+./contrib/mod_sftp_pam.c:657:MODRET set_sftppamservicename(cmd_rec *cmd) {
+./contrib/mod_dynmasq.c:148:MODRET set_dynmasqctrlsacls(cmd_rec *cmd) {
+./contrib/mod_dynmasq.c:187:MODRET set_dynmasqrefresh(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:85:MODRET sqlodbc_close(cmd_rec *);
+./contrib/mod_sql_odbc.c:128:      cmd_rec *cmd = NULL;
+./contrib/mod_sql_odbc.c:331:static modret_t *sqlodbc_get_error(cmd_rec *cmd, SQLSMALLINT handle_type,
+./contrib/mod_sql_odbc.c:370:static modret_t *sqlodbc_get_data(cmd_rec *cmd, db_conn_t *conn) {
+./contrib/mod_sql_odbc.c:789:MODRET sqlodbc_open(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:997:MODRET sqlodbc_close(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1071:MODRET sqlodbc_def_conn(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1119:MODRET sqlodbc_select(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1124:  cmd_rec *close_cmd;
+./contrib/mod_sql_odbc.c:1268:MODRET sqlodbc_insert(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1273:  cmd_rec *close_cmd;
+./contrib/mod_sql_odbc.c:1359:MODRET sqlodbc_update(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1364:  cmd_rec *close_cmd;
+./contrib/mod_sql_odbc.c:1453:MODRET sqlodbc_procedure(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1466:MODRET sqlodbc_query(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1471:  cmd_rec *close_cmd;
+./contrib/mod_sql_odbc.c:1569:MODRET sqlodbc_quote(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1575:  cmd_rec *close_cmd;
+./contrib/mod_sql_odbc.c:1614:MODRET sqlodbc_exit(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1623:      cmd_rec *close_cmd = pr_cmd_alloc(conn_pool, 2, entry->name, "1");
+./contrib/mod_sql_odbc.c:1633:MODRET sqlodbc_checkauth(cmd_rec *cmd) {
+./contrib/mod_sql_odbc.c:1649:MODRET sqlodbc_identify(cmd_rec * cmd) {
+./contrib/mod_radius.c:2631:MODRET radius_auth(cmd_rec *cmd) {
+./contrib/mod_radius.c:2648:MODRET radius_check(cmd_rec *cmd) {
+./contrib/mod_radius.c:2652:MODRET radius_name2uid(cmd_rec *cmd) {
+./contrib/mod_radius.c:2656:MODRET radius_name2gid(cmd_rec *cmd) {
+./contrib/mod_radius.c:2660:MODRET radius_uid2name(cmd_rec *cmd) {
+./contrib/mod_radius.c:2664:MODRET radius_gid2name(cmd_rec *cmd) {
+./contrib/mod_radius.c:2668:MODRET radius_endgrent(cmd_rec *cmd) {
+./contrib/mod_radius.c:2672:MODRET radius_getgrnam(cmd_rec *cmd) {
+./contrib/mod_radius.c:2676:MODRET radius_getgrent(cmd_rec *cmd) {
+./contrib/mod_radius.c:2680:MODRET radius_getgrgid(cmd_rec *cmd) {
+./contrib/mod_radius.c:2684:MODRET radius_getgroups(cmd_rec *cmd) {
+./contrib/mod_radius.c:2735:MODRET radius_setgrent(cmd_rec *cmd) {
+./contrib/mod_radius.c:2739:MODRET radius_endpwent(cmd_rec *cmd) {
+./contrib/mod_radius.c:2743:MODRET radius_getpwnam(cmd_rec *cmd) {
+./contrib/mod_radius.c:2762:MODRET radius_getpwent(cmd_rec *cmd) {
+./contrib/mod_radius.c:2774:MODRET radius_getpwuid(cmd_rec *cmd) {
+./contrib/mod_radius.c:2790:MODRET radius_setpwent(cmd_rec *cmd) {
+./contrib/mod_radius.c:2799:MODRET radius_quota_lookup(cmd_rec *cmd) {
+./contrib/mod_radius.c:2826:MODRET radius_pre_pass(cmd_rec *cmd) {
+./contrib/mod_radius.c:2968:MODRET radius_post_pass(cmd_rec *cmd) {
+./contrib/mod_radius.c:2986:MODRET radius_post_pass_err(cmd_rec *cmd) {
+./contrib/mod_radius.c:2995:MODRET set_radiusacctserver(cmd_rec *cmd) {
+./contrib/mod_radius.c:3048:MODRET set_radiusauthserver(cmd_rec *cmd) {
+./contrib/mod_radius.c:3098:MODRET set_radiusengine(cmd_rec *cmd) {
+./contrib/mod_radius.c:3117:MODRET set_radiusgroupinfo(cmd_rec *cmd) {
+./contrib/mod_radius.c:3194:MODRET set_radiuslog(cmd_rec *cmd) {
+./contrib/mod_radius.c:3204:MODRET set_radiusnasidentifier(cmd_rec *cmd) {
+./contrib/mod_radius.c:3215:MODRET set_radiusquotainfo(cmd_rec *cmd) {
+./contrib/mod_radius.c:3311:MODRET set_radiusrealm(cmd_rec *cmd) {
+./contrib/mod_radius.c:3320:MODRET set_radiususerinfo(cmd_rec *cmd) {
+./contrib/mod_radius.c:3371:MODRET set_radiusvendor(cmd_rec *cmd) {
+./contrib/mod_quotatab_ldap.c:44:  cmd_rec *ldap_cmd = NULL;
+./contrib/mod_sftp/scp.c:162:static cmd_rec *scp_cmd_alloc(pool *p, const char *name, const char *arg) {
+./contrib/mod_sftp/scp.c:163:  cmd_rec *cmd;
+./contrib/mod_sftp/scp.c:728:  cmd_rec *cmd = NULL;
+./contrib/mod_sftp/scp.c:1219:  cmd_rec *cmd = NULL;
+./contrib/mod_sftp/scp.c:1894:  cmd_rec *cmd = NULL;
+./contrib/mod_sftp/scp.c:1907:  session.curr_cmd_rec = cmd;
+./contrib/mod_sftp/scp.c:1929:        session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:1963:    session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:1980:        session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:1991:        session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:2007:      session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:2027:      session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:2051:      session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:2084:    session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:2096:    session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:2109:      session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/scp.c:2122:  session.curr_cmd_rec = NULL;
+./contrib/mod_sftp/auth-publickey.c:76:int sftp_auth_publickey(struct ssh2_packet *pkt, cmd_rec *pass_cmd,
+./contrib/mod_sftp/kex.c:2373:  cmd_rec *cmd;
+./contrib/mod_sftp/kex.c:2848:  cmd_rec *cmd;
+./contrib/mod_sftp/kex.c:3134:  cmd_rec *cmd;
+./contrib/mod_sftp/kex.c:3345:  cmd_rec *cmd;
+./contrib/mod_sftp/kex.c:3507:  cmd_rec *cmd;
+./contrib/mod_sftp/auth-hostbased.c:41:int sftp_auth_hostbased(struct ssh2_packet *pkt, cmd_rec *pass_cmd,
+./contrib/mod_sftp/auth.h:44:int sftp_auth_hostbased(struct ssh2_packet *, cmd_rec *,
+./contrib/mod_sftp/auth.h:49:int sftp_auth_kbdint(struct ssh2_packet *, cmd_rec *,
+./contrib/mod_sftp/auth.h:54:int sftp_auth_password(struct ssh2_packet *, cmd_rec *,
+./contrib/mod_sftp/auth.h:59:int sftp_auth_publickey(struct ssh2_packet *, cmd_rec *,
+./contrib/mod_sftp/channel.c:381:  cmd_rec *cmd;
+./contrib/mod_sftp/channel.c:435:  cmd_rec *cmd;
+./contrib/mod_sftp/channel.c:671:  cmd_rec *cmd;
+./contrib/mod_sftp/channel.c:979:  cmd_rec *cmd;
+./contrib/mod_sftp/channel.c:1136:  cmd_rec *cmd;
+./contrib/mod_sftp/auth.c:273:  cmd_rec *cmd;
+./contrib/mod_sftp/auth.c:886:  cmd_rec *cmd, *user_cmd, *pass_cmd;
+./contrib/mod_sftp/auth.c:1237:  /* Make sure that the password cmd_rec arg points back to the static
+./contrib/mod_sftp/mod_sftp.c:62:static int sftp_have_authenticated(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:259:MODRET set_sftpacceptenv(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:282:MODRET set_sftpauthmeths(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:334:MODRET set_sftpauthorizedkeys(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:385:MODRET set_sftpciphers(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:411:MODRET set_sftpclientalive(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:440:MODRET set_sftpclientmatch(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:805:MODRET set_sftpcompression(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:833:MODRET set_sftpcryptodevice(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:847:MODRET set_sftpdhparamfile(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:861:MODRET set_sftpdigests(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:887:MODRET set_sftpdisplaybanner(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:896:MODRET set_sftpengine(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:915:MODRET set_sftpextensions(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1053:MODRET set_sftphostkey(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1088:MODRET set_sftpkeyblacklist(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1109:MODRET set_sftpkeyexchanges(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1152:MODRET set_sftplog(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1161:MODRET set_sftpmaxchannels(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1189:MODRET set_sftpoptions(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1250:MODRET set_sftppassphraseprovider(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1276:MODRET set_sftprekey(cmd_rec *cmd) {
+./contrib/mod_sftp/mod_sftp.c:1362:MODRET set_sftptrafficpolicy(cmd_rec *cmd) {
+./contrib/mod_sftp/kbdint.c:259:  cmd_rec *cmd;
+./contrib/mod_sftp/auth-kbdint.c:39:int sftp_auth_kbdint(struct ssh2_packet *pkt, cmd_rec *pass_cmd,
+./contrib/mod_sftp/fxp.c:388:static cmd_rec *fxp_cmd_alloc(pool *p, const char *name, char *arg) {
+./contrib/mod_sftp/fxp.c:389:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:644:static void fxp_set_filehandle_note(cmd_rec *cmd, struct fxp_handle *fxh) {
+./contrib/mod_sftp/fxp.c:1360:      cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:1426:      cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:2492:static struct fxp_dirent *fxp_get_dirent(pool *p, cmd_rec *cmd,
+./contrib/mod_sftp/fxp.c:2647:  cmd_rec *cmd = NULL;
+./contrib/mod_sftp/fxp.c:3658:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:4061:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:4067:  /* We need to provide an actual argv in this COPY cmd_rec, so we can't
+./contrib/mod_sftp/fxp.c:4068:   * use fxp_cmd_alloc(); we have to allocate the cmd_rec ourselves.
+./contrib/mod_sftp/fxp.c:4328:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:4380:  cmd_rec *cmd = NULL, *cmd2 = NULL, *cmd3 = NULL;
+./contrib/mod_sftp/fxp.c:5168:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:5250:    cmd_rec *cmd2 = NULL;
+./contrib/mod_sftp/fxp.c:5415:    cmd_rec *cmd2;
+./contrib/mod_sftp/fxp.c:5492:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:5811:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:6045:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:6219:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:6328:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:6488:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:6737:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:6928:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:7201:  cmd_rec *cmd, *cmd2 = NULL;
+./contrib/mod_sftp/fxp.c:7827:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:8177:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:8502:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:8838:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:9042:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:9347:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:9648:  cmd_rec *cmd = NULL, *cmd2 = NULL, *cmd3 = NULL;
+./contrib/mod_sftp/fxp.c:10082:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:10340:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:10524:  cmd_rec *cmd;
+./contrib/mod_sftp/fxp.c:10715:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:10817:  /* We use a slightly different cmd_rec here, for the benefit of PRE_CMD
+./contrib/mod_sftp/fxp.c:10820:   * single-string args argument in the cmd_rec.
+./contrib/mod_sftp/fxp.c:10957:  cmd_rec *cmd, *cmd2;
+./contrib/mod_sftp/fxp.c:11307:  cmd_rec *cmd;
+./contrib/mod_sftp/service.c:41:  cmd_rec *cmd;
+./contrib/mod_sftp/auth-password.c:35:int sftp_auth_password(struct ssh2_packet *pkt, cmd_rec *pass_cmd,
+./contrib/mod_rewrite.c:139:static char *rewrite_expand_var(cmd_rec *, const char *, const char *);
+./contrib/mod_rewrite.c:140:static char *rewrite_get_cmd_name(cmd_rec *);
+./contrib/mod_rewrite.c:142:static unsigned char rewrite_match_cond(cmd_rec *, config_rec *);
+./contrib/mod_rewrite.c:152:static void rewrite_replace_cmd_arg(cmd_rec *, char *);
+./contrib/mod_rewrite.c:153:static char *rewrite_subst(cmd_rec *c, char *);
+./contrib/mod_rewrite.c:154:static char *rewrite_subst_backrefs(cmd_rec *, char *, rewrite_match_t *);
+./contrib/mod_rewrite.c:155:static char *rewrite_subst_env(cmd_rec *, char *);
+./contrib/mod_rewrite.c:156:static char *rewrite_subst_maps(cmd_rec *, char *);
+./contrib/mod_rewrite.c:157:static char *rewrite_subst_maps_fifo(cmd_rec *, config_rec *, rewrite_map_t *);
+./contrib/mod_rewrite.c:158:static char *rewrite_subst_maps_int(cmd_rec *, config_rec *, rewrite_map_t *);
+./contrib/mod_rewrite.c:159:static char *rewrite_subst_maps_txt(cmd_rec *, config_rec *, rewrite_map_t *);
+./contrib/mod_rewrite.c:160:static char *rewrite_subst_vars(cmd_rec *, char *);
+./contrib/mod_rewrite.c:170:static char *rewrite_expand_var(cmd_rec *cmd, const char *subst_pattern,
+./contrib/mod_rewrite.c:421:static char *rewrite_get_cmd_name(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:506:static unsigned char rewrite_match_cond(cmd_rec *cmd, config_rec *cond) {
+./contrib/mod_rewrite.c:866:static void rewrite_replace_cmd_arg(cmd_rec *cmd, char *new_arg) {
+./contrib/mod_rewrite.c:882:static char *rewrite_subst(cmd_rec *cmd, char *pattern) {
+./contrib/mod_rewrite.c:943:static char *rewrite_subst_backrefs(cmd_rec *cmd, char *pattern,
+./contrib/mod_rewrite.c:1172:static char *rewrite_subst_env(cmd_rec *cmd, char *pattern) {
+./contrib/mod_rewrite.c:1220:static char *rewrite_subst_maps(cmd_rec *cmd, char *pattern) {
+./contrib/mod_rewrite.c:1308:static char *rewrite_subst_maps_fifo(cmd_rec *cmd, config_rec *c,
+./contrib/mod_rewrite.c:1499:static char *rewrite_subst_maps_int(cmd_rec *cmd, config_rec *c,
+./contrib/mod_rewrite.c:1511:static char *rewrite_subst_maps_txt(cmd_rec *cmd, config_rec *c,
+./contrib/mod_rewrite.c:1537:static char *rewrite_subst_vars(cmd_rec *cmd, char *pattern) {
+./contrib/mod_rewrite.c:2070:MODRET set_rewritecondition(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2232:MODRET set_rewriteengine(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2256:MODRET set_rewritelock(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2270:MODRET set_rewritemaxreplace(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2290:MODRET set_rewritelog(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2305:MODRET set_rewritemap(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2410:MODRET set_rewriterule(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2509:MODRET rewrite_fixup(cmd_rec *cmd) {
+./contrib/mod_rewrite.c:2776:  cmd_rec *cmd;
+./contrib/mod_site_misc.c:36:static int site_misc_check_filters(cmd_rec *cmd, const char *path) {
+./contrib/mod_site_misc.c:114:    cmd_rec *cmd;
+./contrib/mod_site_misc.c:181:  cmd_rec *cmd;
+./contrib/mod_site_misc.c:405:MODRET set_sitemiscengine(cmd_rec *cmd) {
+./contrib/mod_site_misc.c:426:MODRET site_misc_mkdir(cmd_rec *cmd) {
+./contrib/mod_site_misc.c:514:MODRET site_misc_rmdir(cmd_rec *cmd) {
+./contrib/mod_site_misc.c:593:MODRET site_misc_symlink(cmd_rec *cmd) {
+./contrib/mod_site_misc.c:719:MODRET site_misc_utime(cmd_rec *cmd) {
+./contrib/mod_qos.c:257:MODRET set_qosoptions(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1795:MODRET set_snmpagent(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1850:MODRET set_snmpcommunity(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1859:MODRET set_snmpenable(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1879:MODRET set_snmpengine(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1898:MODRET set_snmplog(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1907:MODRET set_snmpmaxvariables(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1931:MODRET set_snmpnotify(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:1975:MODRET set_snmpoptions(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2019:MODRET set_snmptables(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2110:MODRET snmp_pre_list(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2150:MODRET snmp_log_list(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2214:MODRET snmp_err_list(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2279:MODRET snmp_log_pass(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2344:MODRET snmp_err_pass(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2377:MODRET snmp_pre_retr(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2426:MODRET snmp_log_retr(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2618:MODRET snmp_err_retr(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2700:MODRET snmp_pre_stor(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2749:MODRET snmp_log_stor(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:2941:MODRET snmp_err_stor(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:3023:MODRET snmp_log_auth(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:3067:MODRET snmp_log_ccc(cmd_rec *cmd) {
+./contrib/mod_snmp/mod_snmp.c:3088:MODRET snmp_err_ccc(cmd_rec *cmd) {
+./contrib/mod_copy.c:101:    cmd_rec *cmd;
+./contrib/mod_copy.c:240:      cmd_rec *cmd;
+./contrib/mod_copy.c:478:MODRET set_copyengine(cmd_rec *cmd) {
+./contrib/mod_copy.c:500:MODRET copy_copy(cmd_rec *cmd) {
+./contrib/mod_copy.c:565:MODRET copy_cpfr(cmd_rec *cmd) {
+./contrib/mod_copy.c:635:MODRET copy_cpto(cmd_rec *cmd) {
+./contrib/mod_copy.c:689:MODRET copy_log_site(cmd_rec *cmd) {
+./contrib/mod_copy.c:705:MODRET copy_post_pass(cmd_rec *cmd) {
+./doc/mod_sample.c:52:MODRET sample_pre_any(cmd_rec *cmd) {
+./doc/mod_sample.c:63:MODRET sample_log_any(cmd_rec *cmd) {
+./doc/mod_sample.c:76:MODRET sample_post_retr(cmd_rec *cmd) {
+./doc/mod_sample.c:87:MODRET sample_post_stor(cmd_rec *cmd) {
+./doc/mod_sample.c:92:MODRET sample_post_list(cmd_rec *cmd) {
+./doc/mod_sample.c:96:MODRET sample_post_nlst(cmd_rec *cmd) {
+./doc/mod_sample.c:104:MODRET sample_xfoo(cmd_rec *cmd) {
+./doc/mod_sample.c:139:MODRET set_foobardirective(cmd_rec *cmd) {
+./include/help.h:33:int pr_help_add_response(cmd_rec *, const char *);
+./include/parser.h:88: * handlers is done using a cmd_rec.  This function calls pr_parse_read_line()
+./include/parser.h:89: * to obtain the next line of configuration text, then allocates a cmd_rec
+./include/parser.h:93:cmd_rec *pr_parser_parse_line(pool *p);
+./include/proftpd.h:142:  struct cmd_struc *curr_cmd_rec;       /* Current command */
+./include/throttle.h:33:void pr_throttle_init(cmd_rec *);
+./include/dirtree.h:137:} cmd_rec;
+./include/dirtree.h:318:int dir_check_full(pool *, cmd_rec *, const char *, const char *, int *);
+./include/dirtree.h:319:int dir_check_limits(cmd_rec *, config_rec *, const char *, int);
+./include/dirtree.h:320:int dir_check(pool *, cmd_rec *, const char *, const char *, int *);
+./include/dirtree.h:321:int dir_check_canon(pool *, cmd_rec *, const char *, const char *, int *);
+./include/dirtree.h:328:unsigned char check_context(cmd_rec *, int);
+./include/dirtree.h:329:char *get_context_name(cmd_rec *);
+./include/dirtree.h:330:int get_boolean(cmd_rec *, int);
+./include/dirtree.h:331:char *get_full_cmd(cmd_rec *);
+./include/cmd.h:30:cmd_rec *pr_cmd_alloc(pool *, int, ...);
+./include/cmd.h:31:int pr_cmd_clear_cache(cmd_rec *);
+./include/cmd.h:32:char *pr_cmd_get_displayable_str(cmd_rec *, size_t *);
+./include/cmd.h:34:int pr_cmd_cmp(cmd_rec *cmd, int cmd_id);
+./include/cmd.h:35:int pr_cmd_strcmp(cmd_rec *cmd, const char *cmd_name);
+./include/cmd.h:112:int pr_cmd_is_http(cmd_rec *c);
+./include/cmd.h:117:int pr_cmd_is_smtp(cmd_rec *c);
+./include/cmd.h:119:int pr_cmd_set_name(cmd_rec *, const char *);
+./include/cmd.h:122:int pr_cmd_read(cmd_rec **);
+./include/cmd.h:123:int pr_cmd_dispatch(cmd_rec *);
+./include/cmd.h:124:int pr_cmd_dispatch_phase(cmd_rec *, int, int);
+./include/modules.h:71:  modret_t *(*handler)(cmd_rec*);
+./include/modules.h:114:  modret_t *(*handler)(cmd_rec*);
+./include/modules.h:130:  modret_t *(*handler)(cmd_rec*);
+./include/modules.h:179:modret_t *pr_module_call(module *, modret_t *(*)(cmd_rec *), cmd_rec *);
+./include/modules.h:182:void set_auth_check(int (*ck)(cmd_rec *));
+./include/modules.h:185:extern int (*cmd_auth_chk)(cmd_rec *);
+./include/modules.h:188:modret_t *mod_create_ret(cmd_rec *, unsigned char, char *, char *);
+./include/modules.h:189:modret_t *mod_create_error(cmd_rec *, int);
+./include/modules.h:190:modret_t *mod_create_data(cmd_rec *, void *);
+./include/modules.h:193:int core_chgrp(cmd_rec *, char *, uid_t, gid_t);
+./include/modules.h:194:int core_chmod(cmd_rec *, char *, mode_t);
+./modules/mod_lang.c:292:MODRET set_langdefault(cmd_rec *cmd) {
+./modules/mod_lang.c:301:MODRET set_langengine(cmd_rec *cmd) {
+./modules/mod_lang.c:321:MODRET set_langpath(cmd_rec *cmd) {
+./modules/mod_lang.c:335:MODRET set_useencoding(cmd_rec *cmd) {
+./modules/mod_lang.c:386:MODRET lang_lang(cmd_rec *cmd) {
+./modules/mod_lang.c:475:MODRET lang_utf8(cmd_rec *cmd) {
+./modules/mod_ctrls.c:938:MODRET set_ctrlsacls(cmd_rec *cmd) {
+./modules/mod_ctrls.c:977:MODRET set_ctrlsauthfreshness(cmd_rec *cmd) {
+./modules/mod_ctrls.c:992:MODRET set_ctrlsengine(cmd_rec *cmd) {
+./modules/mod_ctrls.c:1007:MODRET set_ctrlsinterval(cmd_rec *cmd) {
+./modules/mod_ctrls.c:1027:MODRET set_ctrlslog(cmd_rec *cmd) {
+./modules/mod_ctrls.c:1050:MODRET set_ctrlsmaxclients(cmd_rec *cmd) {
+./modules/mod_ctrls.c:1065:MODRET set_ctrlssocket(cmd_rec *cmd) {
+./modules/mod_ctrls.c:1090:MODRET set_ctrlssocketacl(cmd_rec *cmd) {
+./modules/mod_ctrls.c:1119:MODRET set_ctrlssocketowner(cmd_rec *cmd) {
+./modules/mod_auth.c~:50:static int auth_count_scoreboard(cmd_rec *, char *);
+./modules/mod_auth.c~:73:static int auth_cmd_chk_cb(cmd_rec *cmd) 
+./modules/mod_auth.c~:294:MODRET auth_post_host(cmd_rec *cmd) {
+./modules/mod_auth.c~:325:MODRET auth_err_pass(cmd_rec *cmd) {
+./modules/mod_auth.c~:339:MODRET auth_log_pass(cmd_rec *cmd) {
+./modules/mod_auth.c~:359:MODRET auth_post_pass(cmd_rec *cmd) {
+./modules/mod_auth.c~:869:static int setup_env(pool *p, cmd_rec *cmd, char *user, char *pass) {
+./modules/mod_auth.c~:1862:static int have_client_limits(cmd_rec *cmd) {
+./modules/mod_auth.c~:1886:static int auth_count_scoreboard(cmd_rec *cmd, char *user) {
+./modules/mod_auth.c~:2155:MODRET auth_pre_user(cmd_rec *cmd) {
+./modules/mod_auth.c~:2177:MODRET auth_user(cmd_rec *cmd) {
+./modules/mod_auth.c~:2328:    cmd_rec *fakecmd = pr_cmd_alloc(cmd->pool, 2, NULL);
+./modules/mod_auth.c~:2355:MODRET auth_pre_pass(cmd_rec *cmd) {
+./modules/mod_auth.c~:2399:MODRET auth_pass(cmd_rec *cmd) {
+./modules/mod_auth.c~:2492:MODRET auth_acct(cmd_rec *cmd) {
+./modules/mod_auth.c~:2497:MODRET auth_rein(cmd_rec *cmd) {
+./modules/mod_auth.c~:2505:MODRET set_accessdenymsg(cmd_rec *cmd) {
+./modules/mod_auth.c~:2517:MODRET set_accessgrantmsg(cmd_rec *cmd) {
+./modules/mod_auth.c~:2530:MODRET set_allowchrootsymlinks(cmd_rec *cmd) {
+./modules/mod_auth.c~:2549:MODRET set_anonrequirepassword(cmd_rec *cmd) {
+./modules/mod_auth.c~:2567:MODRET set_anonrejectpasswords(cmd_rec *cmd) {
+./modules/mod_auth.c~:2598:MODRET set_authaliasonly(cmd_rec *cmd) {
+./modules/mod_auth.c~:2617:MODRET set_authusingalias(cmd_rec *cmd) {
+./modules/mod_auth.c~:2635:MODRET set_createhome(cmd_rec *cmd) {
+./modules/mod_auth.c~:2830:MODRET add_defaultroot(cmd_rec *cmd) {
+./modules/mod_auth.c~:2878:MODRET add_defaultchdir(cmd_rec *cmd) {
+./modules/mod_auth.c~:2922:MODRET set_displaylogin(cmd_rec *cmd) {
+./modules/mod_auth.c~:2934:MODRET set_grouppassword(cmd_rec *cmd) {
+./modules/mod_auth.c~:2946:MODRET set_loginpasswordprompt(cmd_rec *cmd) {
+./modules/mod_auth.c~:2966:MODRET set_maxclientsclass(cmd_rec *cmd) {
+./modules/mod_auth.c~:3002:MODRET set_maxclients(cmd_rec *cmd) {
+./modules/mod_auth.c~:3041:MODRET set_maxhostclients(cmd_rec *cmd) {
+./modules/mod_auth.c~:3081:MODRET set_maxuserclients(cmd_rec *cmd) {
+./modules/mod_auth.c~:3120:MODRET set_maxconnectsperhost(cmd_rec *cmd) {
+./modules/mod_auth.c~:3155:MODRET set_maxhostsperuser(cmd_rec *cmd) {
+./modules/mod_auth.c~:3193:MODRET set_maxloginattempts(cmd_rec *cmd) {
+./modules/mod_auth.c~:3218:MODRET set_requirevalidshell(cmd_rec *cmd) {
+./modules/mod_auth.c~:3238:MODRET set_rewritehome(cmd_rec *cmd) {
+./modules/mod_auth.c~:3256:MODRET set_rootlogin(cmd_rec *cmd) {
+./modules/mod_auth.c~:3276:MODRET set_rootrevoke(cmd_rec *cmd) {
+./modules/mod_auth.c~:3304:MODRET set_timeoutlogin(cmd_rec *cmd) {
+./modules/mod_auth.c~:3323:MODRET set_timeoutsession(cmd_rec *cmd) {
+./modules/mod_auth.c~:3434:MODRET set_useftpusers(cmd_rec *cmd) {
+./modules/mod_auth.c~:3454:MODRET set_uselastlog(cmd_rec *cmd) {
+./modules/mod_auth.c~:3477:MODRET set_useralias(cmd_rec *cmd) {
+./modules/mod_auth.c~:3498:MODRET set_userdirroot(cmd_rec *cmd) {
+./modules/mod_auth.c~:3516:MODRET set_userpassword(cmd_rec *cmd) {
+./modules/mod_xfer.c:60:static int xfer_check_limit(cmd_rec *);
+./modules/mod_xfer.c:272:static int xfer_check_limit(cmd_rec *cmd) {
+./modules/mod_xfer.c:1009:static int get_hidden_store_path(cmd_rec *cmd, char *path, char *prefix,
+./modules/mod_xfer.c:1149:MODRET xfer_post_prot(cmd_rec *cmd) {
+./modules/mod_xfer.c:1162:MODRET xfer_post_mode(cmd_rec *cmd) {
+./modules/mod_xfer.c:1180:MODRET xfer_pre_stor(cmd_rec *cmd) {
+./modules/mod_xfer.c:1351:MODRET xfer_pre_stou(cmd_rec *cmd) {
+./modules/mod_xfer.c:1393:  /* Now, construct the unique filename using the cmd_rec's pool, the
+./modules/mod_xfer.c:1485:MODRET xfer_post_stou(cmd_rec *cmd) {
+./modules/mod_xfer.c:1513:MODRET xfer_pre_appe(cmd_rec *cmd) {
+./modules/mod_xfer.c:1526:MODRET xfer_stor(cmd_rec *cmd) {
+./modules/mod_xfer.c:1884:MODRET xfer_rest(cmd_rec *cmd) {
+./modules/mod_xfer.c:1944:MODRET xfer_pre_retr(cmd_rec *cmd) {
+./modules/mod_xfer.c:2039:MODRET xfer_retr(cmd_rec *cmd) {
+./modules/mod_xfer.c:2237:MODRET xfer_abor(cmd_rec *cmd) {
+./modules/mod_xfer.c:2257:MODRET xfer_log_abor(cmd_rec *cmd) {
+./modules/mod_xfer.c:2266:MODRET xfer_type(cmd_rec *cmd) {
+./modules/mod_xfer.c:2305:MODRET xfer_stru(cmd_rec *cmd) {
+./modules/mod_xfer.c:2349:MODRET xfer_mode(cmd_rec *cmd) {
+./modules/mod_xfer.c:2378:MODRET xfer_allo(cmd_rec *cmd) {
+./modules/mod_xfer.c:2447:MODRET xfer_smnt(cmd_rec *cmd) {
+./modules/mod_xfer.c:2452:MODRET xfer_err_cleanup(cmd_rec *cmd) {
+./modules/mod_xfer.c:2464:MODRET xfer_log_stor(cmd_rec *cmd) {
+./modules/mod_xfer.c:2480:MODRET xfer_log_retr(cmd_rec *cmd) {
+./modules/mod_xfer.c:2534:MODRET xfer_post_host(cmd_rec *cmd) {
+./modules/mod_xfer.c:2562:MODRET xfer_post_pass(cmd_rec *cmd) {
+./modules/mod_xfer.c:2607:MODRET set_allowoverwrite(cmd_rec *cmd) {
+./modules/mod_xfer.c:2627:MODRET set_allowrestart(cmd_rec *cmd) {
+./modules/mod_xfer.c:2647:MODRET set_deleteabortedstores(cmd_rec *cmd) {
+./modules/mod_xfer.c:2668:MODRET set_displayfiletransfer(cmd_rec *cmd) {
+./modules/mod_xfer.c:2676:MODRET set_hiddenstores(cmd_rec *cmd) {
+./modules/mod_xfer.c:2747:MODRET set_maxfilesize(cmd_rec *cmd) {
+./modules/mod_xfer.c:2816:    /* Pass the cmd_rec off to see what number of bytes was
+./modules/mod_xfer.c:2874:MODRET set_maxtransfersperhost(cmd_rec *cmd) {
+./modules/mod_xfer.c:2908:MODRET set_maxtransfersperuser(cmd_rec *cmd) {
+./modules/mod_xfer.c:2941:MODRET set_storeuniqueprefix(cmd_rec *cmd) {
+./modules/mod_xfer.c:2959:MODRET set_timeoutnoxfer(cmd_rec *cmd) {
+./modules/mod_xfer.c:2979:MODRET set_timeoutstalled(cmd_rec *cmd) {
+./modules/mod_xfer.c:3001:MODRET set_transferpriority(cmd_rec *cmd) {
+./modules/mod_xfer.c:3066:MODRET set_transferrate(cmd_rec *cmd) {
+./modules/mod_xfer.c:3212:MODRET set_usesendfile(cmd_rec *cmd) {
+./modules/mod_xfer.c:3297:    cmd_rec *cmd = pr_cmd_alloc(p, 1, session.curr_cmd);
+./modules/mod_xfer.c:3317:    cmd_rec *cmd;
+./modules/mod_delay.c:1246:MODRET set_delayctrlsacls(cmd_rec *cmd) {
+./modules/mod_delay.c:1278:MODRET set_delayengine(cmd_rec *cmd) {
+./modules/mod_delay.c:1297:MODRET set_delaytable(cmd_rec *cmd) {
+./modules/mod_delay.c:1311:MODRET delay_post_pass(cmd_rec *cmd) {
+./modules/mod_delay.c:1413:MODRET delay_pre_pass(cmd_rec *cmd) {
+./modules/mod_delay.c:1421:MODRET delay_post_host(cmd_rec *cmd) {
+./modules/mod_delay.c:1446:MODRET delay_post_user(cmd_rec *cmd) {
+./modules/mod_delay.c:1550:MODRET delay_pre_user(cmd_rec *cmd) {
+./modules/mod_cap.c:170:MODRET set_caprootrevoke(cmd_rec *cmd) {
+./modules/mod_cap.c:189:MODRET set_caps(cmd_rec *cmd) {
+./modules/mod_cap.c:252:MODRET set_capengine(cmd_rec *cmd) {
+./modules/mod_cap.c:273:MODRET cap_post_host(cmd_rec *cmd) {
+./modules/mod_cap.c:299:MODRET cap_post_pass(cmd_rec *cmd) {
+Binary file ./modules/module_glue.o matches
+./modules/mod_site.c:33:extern int core_chmod(cmd_rec *cmd, char *dir, mode_t mode);
+./modules/mod_site.c:34:extern int core_chgrp(cmd_rec *cmd, char *dir, uid_t uid, gid_t gid);
+./modules/mod_site.c:36:modret_t *site_dispatch(cmd_rec *);
+./modules/mod_site.c:49:static char *_get_full_cmd(cmd_rec *cmd) {
+./modules/mod_site.c:67:MODRET site_chgrp(cmd_rec *cmd) {
+./modules/mod_site.c:154:MODRET site_chmod(cmd_rec *cmd) {
+./modules/mod_site.c:411:MODRET site_help(cmd_rec *cmd) {
+./modules/mod_site.c:464:modret_t *site_dispatch(cmd_rec *cmd) {
+./modules/mod_site.c:490:MODRET site_pre_cmd(cmd_rec *cmd) {
+./modules/mod_site.c:497:MODRET site_cmd(cmd_rec *cmd) {
+./modules/mod_site.c:499:  cmd_rec *tmpcmd = NULL;
+./modules/mod_site.c:502:  tmpcmd = pcalloc(cmd->pool, sizeof(cmd_rec));
+./modules/mod_site.c:503:  memcpy(tmpcmd, cmd, sizeof(cmd_rec));
+./modules/mod_site.c:519:MODRET site_post_cmd(cmd_rec *cmd) {
+./modules/mod_auth_file.c:892:MODRET authfile_endpwent(cmd_rec *cmd) {
+./modules/mod_auth_file.c:897:MODRET authfile_getpwent(cmd_rec *cmd) {
+./modules/mod_auth_file.c:905:MODRET authfile_getpwnam(cmd_rec *cmd) {
+./modules/mod_auth_file.c:925:MODRET authfile_getpwuid(cmd_rec *cmd) {
+./modules/mod_auth_file.c:938:MODRET authfile_name2uid(cmd_rec *cmd) {
+./modules/mod_auth_file.c:950:MODRET authfile_setpwent(cmd_rec *cmd) {
+./modules/mod_auth_file.c:958:MODRET authfile_uid2name(cmd_rec *cmd) {
+./modules/mod_auth_file.c:970:MODRET authfile_endgrent(cmd_rec *cmd) {
+./modules/mod_auth_file.c:975:MODRET authfile_getgrent(cmd_rec *cmd) {
+./modules/mod_auth_file.c:983:MODRET authfile_getgrgid(cmd_rec *cmd) {
+./modules/mod_auth_file.c:996:MODRET authfile_getgrnam(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1015:MODRET authfile_getgroups(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1093:MODRET authfile_gid2name(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1105:MODRET authfile_name2gid(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1117:MODRET authfile_setgrent(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1125:MODRET authfile_auth(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1161:MODRET authfile_chkpass(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1210:MODRET set_authgroupfile(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1332:MODRET authfile_post_host(cmd_rec *cmd) {
+./modules/mod_auth_file.c:1357:MODRET set_authuserfile(cmd_rec *cmd) {
+Binary file ./modules/mod_auth.o matches
+./modules/mod_facl.c:1124:MODRET set_faclengine(cmd_rec *cmd) {
+./modules/mod_memcache.c:53:MODRET memcache_post_host(cmd_rec *cmd) {
+./modules/mod_memcache.c:90:MODRET set_memcacheconnectfailures(cmd_rec *cmd) {
+./modules/mod_memcache.c:118:MODRET set_memcacheengine(cmd_rec *cmd) {
+./modules/mod_memcache.c:138:MODRET set_memcachelog(cmd_rec *cmd) {
+./modules/mod_memcache.c:152:MODRET set_memcacheoptions(cmd_rec *cmd) {
+./modules/mod_memcache.c:185:MODRET set_memcachereplicas(cmd_rec *cmd) {
+./modules/mod_memcache.c:213:MODRET set_memcacheservers(cmd_rec *cmd) {
+./modules/mod_memcache.c:257:MODRET set_memcachetimeouts(cmd_rec *cmd) {
+./modules/mod_dso.c:469:MODRET set_loadfile(cmd_rec *cmd) {
+./modules/mod_dso.c:486:MODRET set_loadmodule(cmd_rec *cmd) {
+./modules/mod_dso.c:503:MODRET set_modulectrlsacls(cmd_rec *cmd) {
+./modules/mod_dso.c:533:MODRET set_moduleorder(cmd_rec *cmd) {
+./modules/mod_dso.c:624:MODRET set_modulepath(cmd_rec *cmd) {
+./modules/mod_ls.c:43:static void addfile(cmd_rec *, const char *, const char *, time_t, off_t);
+./modules/mod_ls.c:44:static int outputfiles(cmd_rec *);
+./modules/mod_ls.c:46:static int listfile(cmd_rec *, pool *, const char *);
+./modules/mod_ls.c:47:static int listdir(cmd_rec *, pool *, const char *);
+./modules/mod_ls.c:216:static int ls_perms_full(pool *p, cmd_rec *cmd, const char *path, int *hidden) {
+./modules/mod_ls.c:258:static int ls_perms(pool *p, cmd_rec *cmd, const char *path, int *hidden) {
+./modules/mod_ls.c:412:static void ls_done(cmd_rec *cmd) {
+./modules/mod_ls.c:447:static int listfile(cmd_rec *cmd, pool *p, const char *name) {
+./modules/mod_ls.c:814:static void addfile(cmd_rec *cmd, const char *name, const char *suffix,
+./modules/mod_ls.c:894:static void sortfiles(cmd_rec *cmd) {
+./modules/mod_ls.c:943:static int outputfiles(cmd_rec *cmd) {
+./modules/mod_ls.c:1193:static int listdir(cmd_rec *cmd, pool *workp, const char *name) {
+./modules/mod_ls.c:1679:static int have_options(cmd_rec *cmd, const char *arg) {
+./modules/mod_ls.c:1708:static int dolist(cmd_rec *cmd, const char *opt, int clearflags) {
+./modules/mod_ls.c:2097:static int nlstfile(cmd_rec *cmd, const char *file) {
+./modules/mod_ls.c:2187:static int nlstdir(cmd_rec *cmd, const char *dir) {
+./modules/mod_ls.c:2378:MODRET genericlist(cmd_rec *cmd) {
+./modules/mod_ls.c:2472:MODRET ls_log_nlst(cmd_rec *cmd) {
+./modules/mod_ls.c:2477:MODRET ls_err_nlst(cmd_rec *cmd) {
+./modules/mod_ls.c:2482:MODRET ls_stat(cmd_rec *cmd) {
+./modules/mod_ls.c:2644:MODRET ls_list(cmd_rec *cmd) {
+./modules/mod_ls.c:2658:MODRET ls_nlst(cmd_rec *cmd) {
+./modules/mod_ls.c:3108:MODRET ls_post_pass(cmd_rec *cmd) {
+./modules/mod_ls.c:3124:MODRET set_dirfakeusergroup(cmd_rec *cmd) {
+./modules/mod_ls.c:3160:MODRET set_dirfakemode(cmd_rec *cmd) {
+./modules/mod_ls.c:3182:MODRET set_listoptions(cmd_rec *cmd) {
+./modules/mod_ls.c:3275:MODRET set_showsymlinks(cmd_rec *cmd) {
+./modules/mod_ls.c:3293:MODRET set_useglobbing(cmd_rec *cmd) {
+./modules/mod_core.c:43:extern modret_t *site_dispatch(cmd_rec*);
+./modules/mod_core.c:72:static unsigned long core_exceeded_cmd_rate(cmd_rec *cmd) {
+./modules/mod_core.c:187:MODRET start_ifdefine(cmd_rec *cmd) {
+./modules/mod_core.c:241:MODRET end_ifdefine(cmd_rec *cmd) {
+./modules/mod_core.c:245:MODRET start_ifmodule(cmd_rec *cmd) {
+./modules/mod_core.c:307:MODRET end_ifmodule(cmd_rec *cmd) {
+./modules/mod_core.c:320:MODRET set_define(cmd_rec *cmd) {
+./modules/mod_core.c:333:MODRET add_include(cmd_rec *cmd) {
+./modules/mod_core.c:370:MODRET set_debuglevel(cmd_rec *cmd) {
+./modules/mod_core.c:395:MODRET set_defaultaddress(cmd_rec *cmd) {
+./modules/mod_core.c:502:MODRET set_servername(cmd_rec *cmd) {
+./modules/mod_core.c:512:MODRET set_servertype(cmd_rec *cmd) {
+./modules/mod_core.c:528:MODRET set_setenv(cmd_rec *cmd) {
+./modules/mod_core.c:558:MODRET add_transferlog(cmd_rec *cmd) {
+./modules/mod_core.c:570:MODRET set_wtmplog(cmd_rec *cmd) {
+./modules/mod_core.c:594:MODRET set_serveradmin(cmd_rec *cmd) {
+./modules/mod_core.c:605:MODRET set_useipv6(cmd_rec *cmd) {
+./modules/mod_core.c:631:MODRET set_usereversedns(cmd_rec *cmd) {
+./modules/mod_core.c:647:MODRET set_satisfy(cmd_rec *cmd) {
+./modules/mod_core.c:671:MODRET set_scoreboardfile(cmd_rec *cmd) {
+./modules/mod_core.c:684:MODRET set_scoreboardmutex(cmd_rec *cmd) {
+./modules/mod_core.c:697:MODRET set_scoreboardscrub(cmd_rec *cmd) {
+./modules/mod_core.c:731:MODRET set_serverport(cmd_rec *cmd) {
+./modules/mod_core.c:746:MODRET set_pidfile(cmd_rec *cmd) {
+./modules/mod_core.c:754:MODRET set_sysloglevel(cmd_rec *cmd) {
+./modules/mod_core.c:774:MODRET set_serveralias(cmd_rec *cmd) {
+./modules/mod_core.c:795:MODRET set_serverident(cmd_rec *cmd) {
+./modules/mod_core.c:827:MODRET set_defaultserver(cmd_rec *cmd) {
+./modules/mod_core.c:854:MODRET set_masqueradeaddress(cmd_rec *cmd) {
+./modules/mod_core.c:878:MODRET set_maxinstances(cmd_rec *cmd) {
+./modules/mod_core.c:900:MODRET set_maxcommandrate(cmd_rec *cmd) {
+./modules/mod_core.c:944:MODRET set_maxconnrate(cmd_rec *cmd) {
+./modules/mod_core.c:974:MODRET set_timeoutidle(cmd_rec *cmd) {
+./modules/mod_core.c:994:MODRET set_timeoutlinger(cmd_rec *cmd) {
+./modules/mod_core.c:1013:MODRET set_socketbindtight(cmd_rec *cmd) {
+./modules/mod_core.c:1029:MODRET set_socketoptions(cmd_rec *cmd) {
+./modules/mod_core.c:1171:MODRET set_multilinerfc2228(cmd_rec *cmd) {
+./modules/mod_core.c:1189:MODRET set_tcpbacklog(cmd_rec *cmd) {
+./modules/mod_core.c:1218:MODRET set_tcpnodelay(cmd_rec *cmd) {
+./modules/mod_core.c:1236:MODRET set_user(cmd_rec *cmd) {
+./modules/mod_core.c:1264:MODRET add_from(cmd_rec *cmd) {
+./modules/mod_core.c:1331:MODRET set_group(cmd_rec *cmd) {
+./modules/mod_core.c:1356:MODRET set_trace(cmd_rec *cmd) {
+./modules/mod_core.c:1441:MODRET set_tracelog(cmd_rec *cmd) {
+./modules/mod_core.c:1464:MODRET set_traceoptions(cmd_rec *cmd) {
+./modules/mod_core.c:1545:MODRET set_umask(cmd_rec *cmd) {
+./modules/mod_core.c:1587:MODRET set_unsetenv(cmd_rec *cmd) {
+./modules/mod_core.c:1618:MODRET set_processtitles(cmd_rec *cmd) {
+./modules/mod_core.c:1632:MODRET set_protocols(cmd_rec *cmd) {
+./modules/mod_core.c:1658:MODRET set_regexoptions(cmd_rec *cmd) {
+./modules/mod_core.c:1722:MODRET set_syslogfacility(cmd_rec *cmd) {
+./modules/mod_core.c:1792:MODRET set_timesgmt(cmd_rec *cmd) {
+./modules/mod_core.c:1812:MODRET set_regex(cmd_rec *cmd, char *param, char *type) {
+./modules/mod_core.c:1874:MODRET set_allowdenyfilter(cmd_rec *cmd) {
+./modules/mod_core.c:1935:MODRET set_passiveports(cmd_rec *cmd) {
+./modules/mod_core.c:1967:MODRET set_pathallowfilter(cmd_rec *cmd) {
+./modules/mod_core.c:1971:MODRET set_pathdenyfilter(cmd_rec *cmd) {
+./modules/mod_core.c:1975:MODRET set_allowforeignaddress(cmd_rec *cmd) {
+./modules/mod_core.c:1995:MODRET set_commandbuffersize(cmd_rec *cmd) {
+./modules/mod_core.c:2037:MODRET set_cdpath(cmd_rec *cmd) {
+./modules/mod_core.c:2049:MODRET add_directory(cmd_rec *cmd) {
+./modules/mod_core.c:2134:MODRET set_hidefiles(cmd_rec *cmd) {
+./modules/mod_core.c:2278:MODRET set_hidenoaccess(cmd_rec *cmd) {
+./modules/mod_core.c:2297:MODRET set_hideuser(cmd_rec *cmd) {
+./modules/mod_core.c:2320:MODRET set_hidegroup(cmd_rec *cmd) {
+./modules/mod_core.c:2343:MODRET add_groupowner(cmd_rec *cmd) {
+./modules/mod_core.c:2355:MODRET add_userowner(cmd_rec *cmd) {
+./modules/mod_core.c:2367:MODRET set_allowoverride(cmd_rec *cmd) {
+./modules/mod_core.c:2418:MODRET end_directory(cmd_rec *cmd) {
+./modules/mod_core.c:2432:MODRET add_anonymous(cmd_rec *cmd) {
+./modules/mod_core.c:2465:MODRET end_anonymous(cmd_rec *cmd) {
+./modules/mod_core.c:2479:MODRET add_class(cmd_rec *cmd) {
+./modules/mod_core.c:2490:MODRET end_class(cmd_rec *cmd) {
+./modules/mod_core.c:2501:MODRET add_global(cmd_rec *cmd) {
+./modules/mod_core.c:2514:MODRET end_global(cmd_rec *cmd) {
+./modules/mod_core.c:2528:MODRET add_limit(cmd_rec *cmd) {
+./modules/mod_core.c:2638:MODRET set_order(cmd_rec *cmd) {
+./modules/mod_core.c:2665:MODRET set_allowdenyusergroupclass(cmd_rec *cmd) {
+./modules/mod_core.c:2773:MODRET set_allowdeny(cmd_rec *cmd) {
+./modules/mod_core.c:2861:MODRET set_denyall(cmd_rec *cmd) {
+./modules/mod_core.c:2874:MODRET set_allowall(cmd_rec *cmd) {
+./modules/mod_core.c:2887:MODRET set_authorder(cmd_rec *cmd) {
+./modules/mod_core.c:2910:MODRET end_limit(cmd_rec *cmd) {
+./modules/mod_core.c:2924:MODRET set_ignorehidden(cmd_rec *cmd) {
+./modules/mod_core.c:2943:MODRET set_displaychdir(cmd_rec *cmd) {
+./modules/mod_core.c:2970:MODRET set_displayconnect(cmd_rec *cmd) {
+./modules/mod_core.c:2979:MODRET set_displayquit(cmd_rec *cmd) {
+./modules/mod_core.c:2991:MODRET add_virtualhost(cmd_rec *cmd) {
+./modules/mod_core.c:3078:MODRET end_virtualhost(cmd_rec *cmd) {
+./modules/mod_core.c:3168:MODRET regex_filters(cmd_rec *cmd) {
+./modules/mod_core.c:3205:MODRET core_pre_any(cmd_rec *cmd) {
+./modules/mod_core.c:3283:MODRET core_quit(cmd_rec *cmd) {
+./modules/mod_core.c:3315:MODRET core_log_quit(cmd_rec *cmd) {
+./modules/mod_core.c:3331:static const char *quote_dir(cmd_rec *cmd, char *dir) {
+./modules/mod_core.c:3335:MODRET core_pwd(cmd_rec *cmd) {
+./modules/mod_core.c:3353:MODRET core_pasv(cmd_rec *cmd) {
+./modules/mod_core.c:3525:MODRET core_port(cmd_rec *cmd) {
+./modules/mod_core.c:3729:MODRET core_eprt(cmd_rec *cmd) {
+./modules/mod_core.c:4016:MODRET core_epsv(cmd_rec *cmd) {
+./modules/mod_core.c:4216:MODRET core_help(cmd_rec *cmd) {
+./modules/mod_core.c:4242:MODRET core_host(cmd_rec *cmd) {
+./modules/mod_core.c:4444:MODRET core_post_host(cmd_rec *cmd) {
+./modules/mod_core.c:4517:MODRET core_syst(cmd_rec *cmd) {
+./modules/mod_core.c:4522:int core_chgrp(cmd_rec *cmd, char *dir, uid_t uid, gid_t gid) {
+./modules/mod_core.c:4539:int core_chmod(cmd_rec *cmd, char *dir, mode_t mode) {
+./modules/mod_core.c:4556:MODRET _chdir(cmd_rec *cmd, char *ndir) {
+./modules/mod_core.c:4742:MODRET core_rmd(cmd_rec *cmd) {
+./modules/mod_core.c:4810:MODRET core_mkd(cmd_rec *cmd) {
+./modules/mod_core.c:4888:MODRET core_cwd(cmd_rec *cmd) {
+./modules/mod_core.c:4896:MODRET core_cdup(cmd_rec *cmd) {
+./modules/mod_core.c:4903:MODRET core_mdtm(cmd_rec *cmd) {
+./modules/mod_core.c:4951:MODRET core_size(cmd_rec *cmd) {
+./modules/mod_core.c:4994:MODRET core_dele(cmd_rec *cmd) {
+./modules/mod_core.c:5112:MODRET core_rnto(cmd_rec *cmd) {
+./modules/mod_core.c:5251:MODRET core_rnto_cleanup(cmd_rec *cmd) {
+./modules/mod_core.c:5261:MODRET core_rnfr(cmd_rec *cmd) {
+./modules/mod_core.c:5323:MODRET core_noop(cmd_rec *cmd) {
+./modules/mod_core.c:5328:MODRET core_feat(cmd_rec *cmd) {
+./modules/mod_core.c:5369:MODRET core_opts(cmd_rec *cmd) {
+./modules/mod_core.c:5373:  cmd_rec *subcmd;
+./modules/mod_core.c:5422:MODRET core_post_pass(cmd_rec *cmd) {
+./modules/mod_core.c:5513:MODRET set_defaulttransfermode(cmd_rec *cmd) {
+./modules/mod_core.c:5526:MODRET set_deferwelcome(cmd_rec *cmd) {
+./modules/mod_auth_pam.c:243:MODRET pam_auth(cmd_rec *cmd) {
+./modules/mod_auth_pam.c:537:MODRET set_authpam(cmd_rec *cmd) {
+./modules/mod_auth_pam.c:555:MODRET set_authpamconfig(cmd_rec *cmd) {
+./modules/mod_auth_pam.c:564:MODRET set_authpamoptions(cmd_rec *cmd) {
+./modules/mod_log.c:458:MODRET set_logformat(cmd_rec *cmd) {
+./modules/mod_log.c:532:MODRET set_extendedlog(cmd_rec *cmd) {
+./modules/mod_log.c:587:MODRET set_allowlogsymlinks(cmd_rec *cmd) {
+./modules/mod_log.c:606:MODRET set_serverlog(cmd_rec *cmd) {
+./modules/mod_log.c:616:MODRET set_systemlog(cmd_rec *cmd) {
+./modules/mod_log.c:641:static char *get_next_meta(pool *p, cmd_rec *cmd, unsigned char **f) {
+./modules/mod_log.c:1649:static void do_log(cmd_rec *cmd, logfile_t *lf) {
+./modules/mod_log.c:1704:MODRET log_any(cmd_rec *cmd) {
+./modules/mod_log.c:1739:  cmd_rec *cmd;
+./modules/mod_log.c:1816:  if (session.curr_cmd_rec != NULL) {
+./modules/mod_log.c:1821:    (void) log_any(session.curr_cmd_rec);
+./modules/mod_log.c:1940:MODRET log_pre_dele(cmd_rec *cmd) {
+./modules/mod_log.c:1961:MODRET log_post_host(cmd_rec *cmd) {
+./modules/mod_log.c:1998:MODRET log_post_pass(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:266:MODRET pw_setpwent(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:277:MODRET pw_endpwent(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:288:MODRET pw_setgrent(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:299:MODRET pw_endgrent(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:310:MODRET pw_getgrent(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:323:MODRET pw_getpwent(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:336:MODRET pw_getpwuid(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:351:MODRET pw_getpwnam(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:450:MODRET pw_getgrnam(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:465:MODRET pw_getgrgid(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:707:MODRET pw_auth(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:744:MODRET pw_authz(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:815:MODRET pw_check(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:819:  cmd_rec *cmd2 = NULL;
+./modules/mod_auth_unix.c:899:     * we'll need a cmd_rec.
+./modules/mod_auth_unix.c:967:MODRET pw_uid2name(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:987:MODRET pw_gid2name(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:1006:MODRET pw_name2uid(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:1022:MODRET pw_name2gid(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:1043:MODRET pw_getgroups(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:1260:MODRET auth_unix_post_host(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:1285:MODRET set_authunixoptions(cmd_rec *cmd) {
+./modules/mod_auth_unix.c:1320:MODRET set_persistentpasswd(cmd_rec *cmd) {
+./modules/mod_rlimit.c:100:MODRET set_rlimitchroot(cmd_rec *cmd) {
+./modules/mod_rlimit.c:120:MODRET set_rlimitcpu(cmd_rec *cmd) {
+./modules/mod_rlimit.c:258:MODRET set_rlimitmemory(cmd_rec *cmd) {
+./modules/mod_rlimit.c:375:MODRET set_rlimitopenfiles(cmd_rec *cmd) {
+./modules/mod_rlimit.c:515:MODRET rlimit_post_pass(cmd_rec *cmd) {
+./modules/mod_ident.c:298:MODRET ident_post_host(cmd_rec *cmd) {
+./modules/mod_ident.c:322:MODRET set_identlookups(cmd_rec *cmd) {
+./modules/mod_auth.c:50:static int auth_count_scoreboard(cmd_rec *, char *);
+./modules/mod_auth.c:73:static int auth_cmd_chk_cb(cmd_rec *cmd) 
+./modules/mod_auth.c:294:MODRET auth_post_host(cmd_rec *cmd) {
+./modules/mod_auth.c:325:MODRET auth_err_pass(cmd_rec *cmd) {
+./modules/mod_auth.c:339:MODRET auth_log_pass(cmd_rec *cmd) {
+./modules/mod_auth.c:359:MODRET auth_post_pass(cmd_rec *cmd) {
+./modules/mod_auth.c:869:static int setup_env(pool *p, cmd_rec *cmd, char *user, char *pass) {
+./modules/mod_auth.c:1862:static int have_client_limits(cmd_rec *cmd) {
+./modules/mod_auth.c:1886:static int auth_count_scoreboard(cmd_rec *cmd, char *user) {
+./modules/mod_auth.c:2155:MODRET auth_pre_user(cmd_rec *cmd) {
+./modules/mod_auth.c:2177:MODRET auth_user(cmd_rec *cmd) {
+./modules/mod_auth.c:2328:    cmd_rec *fakecmd = pr_cmd_alloc(cmd->pool, 2, NULL);
+./modules/mod_auth.c:2355:MODRET auth_pre_pass(cmd_rec *cmd) {
+./modules/mod_auth.c:2399:MODRET auth_pass(cmd_rec *cmd) {
+./modules/mod_auth.c:2492:MODRET auth_acct(cmd_rec *cmd) {
+./modules/mod_auth.c:2497:MODRET auth_rein(cmd_rec *cmd) {
+./modules/mod_auth.c:2505:MODRET set_accessdenymsg(cmd_rec *cmd) {
+./modules/mod_auth.c:2517:MODRET set_accessgrantmsg(cmd_rec *cmd) {
+./modules/mod_auth.c:2530:MODRET set_allowchrootsymlinks(cmd_rec *cmd) {
+./modules/mod_auth.c:2549:MODRET set_anonrequirepassword(cmd_rec *cmd) {
+./modules/mod_auth.c:2567:MODRET set_anonrejectpasswords(cmd_rec *cmd) {
+./modules/mod_auth.c:2598:MODRET set_authaliasonly(cmd_rec *cmd) {
+./modules/mod_auth.c:2617:MODRET set_authusingalias(cmd_rec *cmd) {
+./modules/mod_auth.c:2635:MODRET set_createhome(cmd_rec *cmd) {
+./modules/mod_auth.c:2830:MODRET add_defaultroot(cmd_rec *cmd) {
+./modules/mod_auth.c:2878:MODRET add_defaultchdir(cmd_rec *cmd) {
+./modules/mod_auth.c:2922:MODRET set_displaylogin(cmd_rec *cmd) {
+./modules/mod_auth.c:2934:MODRET set_grouppassword(cmd_rec *cmd) {
+./modules/mod_auth.c:2946:MODRET set_loginpasswordprompt(cmd_rec *cmd) {
+./modules/mod_auth.c:2966:MODRET set_maxclientsclass(cmd_rec *cmd) {
+./modules/mod_auth.c:3002:MODRET set_maxclients(cmd_rec *cmd) {
+./modules/mod_auth.c:3041:MODRET set_maxhostclients(cmd_rec *cmd) {
+./modules/mod_auth.c:3081:MODRET set_maxuserclients(cmd_rec *cmd) {
+./modules/mod_auth.c:3120:MODRET set_maxconnectsperhost(cmd_rec *cmd) {
+./modules/mod_auth.c:3155:MODRET set_maxhostsperuser(cmd_rec *cmd) {
+./modules/mod_auth.c:3193:MODRET set_maxloginattempts(cmd_rec *cmd) {
+./modules/mod_auth.c:3218:MODRET set_requirevalidshell(cmd_rec *cmd) {
+./modules/mod_auth.c:3238:MODRET set_rewritehome(cmd_rec *cmd) {
+./modules/mod_auth.c:3256:MODRET set_rootlogin(cmd_rec *cmd) {
+./modules/mod_auth.c:3276:MODRET set_rootrevoke(cmd_rec *cmd) {
+./modules/mod_auth.c:3304:MODRET set_timeoutlogin(cmd_rec *cmd) {
+./modules/mod_auth.c:3323:MODRET set_timeoutsession(cmd_rec *cmd) {
+./modules/mod_auth.c:3434:MODRET set_useftpusers(cmd_rec *cmd) {
+./modules/mod_auth.c:3454:MODRET set_uselastlog(cmd_rec *cmd) {
+./modules/mod_auth.c:3477:MODRET set_useralias(cmd_rec *cmd) {
+./modules/mod_auth.c:3498:MODRET set_userdirroot(cmd_rec *cmd) {
+./modules/mod_auth.c:3516:MODRET set_userpassword(cmd_rec *cmd) {
+./modules/mod_facts.c:69:static int facts_filters_allow_path(cmd_rec *cmd, const char *path) {
+./modules/mod_facts.c:855:MODRET facts_mff(cmd_rec *cmd) {
+./modules/mod_facts.c:1011:MODRET facts_mfmt(cmd_rec *cmd) {
+./modules/mod_facts.c:1099:MODRET facts_mlsd(cmd_rec *cmd) {
+./modules/mod_facts.c:1316:MODRET facts_mlsd_cleanup(cmd_rec *cmd) {
+./modules/mod_facts.c:1334:MODRET facts_mlst(cmd_rec *cmd) {
+./modules/mod_facts.c:1474:MODRET facts_opts_mlst(cmd_rec *cmd) {
+./modules/mod_facts.c:1569:MODRET facts_post_host(cmd_rec *cmd) {
+./modules/mod_facts.c:1594:MODRET set_factsadvertise(cmd_rec *cmd) {
+./modules/mod_facts.c:1613:MODRET set_factsoptions(cmd_rec *cmd) {
+Binary file ./proftpd matches
+./RELEASE_NOTES:613:    cmd_rec.class struct member has been renamed to cmd_rec.cmd_class,
+./src/cmd.c:31: * cmd_rec is:
+./src/cmd.c:147:cmd_rec *pr_cmd_alloc(pool *p, int argc, ...) { 
+./src/cmd.c:149:  cmd_rec *cmd = NULL;
+./src/cmd.c:158:  pr_pool_tag(newpool, "cmd_rec pool");
+./src/cmd.c:160:  cmd = pcalloc(newpool, sizeof(cmd_rec));
+./src/cmd.c:165:  pr_pool_tag(cmd->tmp_pool, "cmd_rec tmp pool");
+./src/cmd.c:189:int pr_cmd_clear_cache(cmd_rec *cmd) {
+./src/cmd.c:204:int pr_cmd_cmp(cmd_rec *cmd, int cmd_id) {
+./src/cmd.c:233:int pr_cmd_set_name(cmd_rec *cmd, const char *cmd_name) {
+./src/cmd.c:246:int pr_cmd_strcmp(cmd_rec *cmd, const char *cmd_name) {
+./src/cmd.c:282:char *pr_cmd_get_displayable_str(cmd_rec *cmd, size_t *str_len) {
+./src/cmd.c:393:int pr_cmd_is_http(cmd_rec *cmd) {
+./src/cmd.c:412:int pr_cmd_is_smtp(cmd_rec *cmd) {
+./src/parser.c:332:  cmd_rec *cmd;
+./src/parser.c:480:cmd_rec *pr_parser_parse_line(pool *p) {
+./src/parser.c:483:  cmd_rec *cmd = NULL;
+./src/parser.c:503:    cmd = pcalloc(sub_pool, sizeof(cmd_rec));
+./src/auth.c:227: * allocates the cmd_rec directly from the given pool, whereas pr_cmd_alloc()
+./src/auth.c:228: * will allocate a subpool from the given pool, and allocate its cmd_rec
+./src/auth.c:229: * from the subpool.  This means that pr_cmd_alloc()'s cmd_rec's can be
+./src/auth.c:230: * subsequently destroyed easily; this function's cmd_rec's will be destroyed
+./src/auth.c:233:static cmd_rec *make_cmd(pool *cp, int argc, ...) {
+./src/auth.c:235:  cmd_rec *c;
+./src/auth.c:238:  c = pcalloc(cp, sizeof(cmd_rec));
+./src/auth.c:266:static modret_t *dispatch_auth(cmd_rec *cmd, char *match, module **m) {
+./src/auth.c:340:  cmd_rec *cmd = NULL;
+./src/auth.c:354:  cmd_rec *cmd = NULL;
+./src/auth.c:375:  cmd_rec *cmd = NULL;
+./src/auth.c:389:  cmd_rec *cmd = NULL;
+./src/auth.c:403:  cmd_rec *cmd = NULL;
+./src/auth.c:439:  cmd_rec *cmd = NULL;
+./src/auth.c:470:  cmd_rec *cmd = NULL;
+./src/auth.c:559:  cmd_rec *cmd = NULL;
+./src/auth.c:599:  cmd_rec *cmd = NULL;
+./src/auth.c:636:  cmd_rec *cmd = NULL;
+./src/auth.c:671:  cmd_rec *cmd = NULL;
+./src/auth.c:756:  cmd_rec *cmd = NULL;
+./src/auth.c:798:  cmd_rec *cmd = NULL;
+./src/auth.c:877:  cmd_rec *cmd;
+./src/auth.c:901:  cmd_rec *cmd = NULL;
+./src/auth.c:959:  cmd_rec *cmd = NULL;
+./src/auth.c:1018:  cmd_rec *cmd = NULL;
+./src/auth.c:1041:  cmd_rec *cmd = NULL;
+./src/auth.c:1066:  cmd_rec *cmd = NULL;
+./src/auth.c:1704:  /* Rather than using a cmd_rec dispatched to mod_rewrite's PRE_CMD handler,
+./src/help.c:79:int pr_help_add_response(cmd_rec *cmd, const char *target) {
+./src/data.c:986:    cmd_rec *cmd = NULL;
+./src/main.c:53:int (*cmd_auth_chk)(cmd_rec *);
+./src/main.c:122:static cmd_rec *make_ftp_cmd(pool *, char *, int);
+./src/main.c:145:void set_auth_check(int (*chk)(cmd_rec*)) {
+./src/main.c:248:static int _dispatch(cmd_rec *cmd, int cmd_type, int validate, char *match) {
+./src/main.c:283:    session.curr_cmd_rec = cmd;
+./src/main.c:302:        pr_pool_tag(cmd->tmp_pool, "cmd_rec tmp pool");
+./src/main.c:391:           * This will allow the cmd_rec to continue to be dispatched to
+./src/main.c:479:int pr_cmd_read(cmd_rec **res) {
+./src/main.c:558:    cmd_rec *cmd;
+./src/main.c:593:int pr_cmd_dispatch_phase(cmd_rec *cmd, int phase, int flags) {
+./src/main.c:761:int pr_cmd_dispatch(cmd_rec *cmd) {
+./src/main.c:766:static cmd_rec *make_ftp_cmd(pool *p, char *buf, int flags) {
+./src/main.c:768:  cmd_rec *cmd;
+./src/main.c:787:  cmd = (cmd_rec *) pcalloc(subpool, sizeof(cmd_rec));
+./src/main.c:817:    cmd_rec *cmd = NULL;
+Binary file ./src/cmd.o matches
+Binary file ./src/main.o matches
+./src/modules.c:41:modret_t *pr_module_call(module *m, modret_t *(*func)(cmd_rec *),
+./src/modules.c:42:    cmd_rec *cmd) {
+./src/modules.c:68:modret_t *mod_create_data(cmd_rec *cmd, void *d) {
+./src/modules.c:77:modret_t *mod_create_ret(cmd_rec *cmd, unsigned char err, char *n, char *m) {
+./src/modules.c:95:modret_t *mod_create_error(cmd_rec *cmd, int mr_errno) {
+./src/dirtree.c:1160:static int check_filter_access(xaset_t *set, const char *name, cmd_rec *cmd) {
+./src/dirtree.c:1316:static int check_limit_allow(config_rec *c, cmd_rec *cmd) {
+./src/dirtree.c:1367:static int check_limit_deny(config_rec *c, cmd_rec *cmd) {
+./src/dirtree.c:1405:static int check_limit(config_rec *c, cmd_rec *cmd) {
+./src/dirtree.c:1538:static int check_limits(xaset_t *set, cmd_rec *cmd, const char *cmd_name,
+./src/dirtree.c:1606:int dir_check_limits(cmd_rec *cmd, config_rec *c, const char *cmd_name,
+./src/dirtree.c:1925:int dir_check_full(pool *pp, cmd_rec *cmd, const char *group, const char *path,
+./src/dirtree.c:1974:  /* Make sure this cmd_rec has a cmd_id. */
+./src/dirtree.c:2081:int dir_check(pool *pp, cmd_rec *cmd, const char *group, const char *path,
+./src/dirtree.c:2135:  /* Make sure this cmd_rec has a cmd_id. */
+./src/dirtree.c:2238:int dir_check_canon(pool *pp, cmd_rec *cmd, const char *group,
+./src/dirtree.c:3716:unsigned char check_context(cmd_rec *cmd, int allowed) {
+./src/dirtree.c:3728:char *get_context_name(cmd_rec *cmd) {
+./src/dirtree.c:3770:int get_boolean(cmd_rec *cmd, int av) {
+./src/dirtree.c:3776:char *get_full_cmd(cmd_rec *cmd) {
+./src/throttle.c:95:void pr_throttle_init(cmd_rec *cmd) {
+./tests/api/cmd.c:47:  cmd_rec *cmd;
+./tests/api/cmd.c:54:  fail_unless(cmd != NULL, "Failed to create cmd_rec: %s", strerror(errno));
+./tests/api/cmd.c:58:  fail_unless(cmd != NULL, "Failed to create cmd_rec: %s", strerror(errno));
+./tests/api/cmd.c:302:  cmd_rec *cmd;
+./tests/api/cmd.c:315:  fail_unless(res == 1, "Failed to handle empty cmd_rec argument");
+./tests/api/cmd.c:330:  cmd_rec *cmd;
+./tests/api/cmd.c:340:  fail_unless(res == 1, "Failed to handle empty cmd_rec");
+./tests/api/cmd.c:361:  cmd_rec *cmd = NULL;
+./tests/api/cmd.c:364:  fail_unless(res == NULL, "Failed to handle null cmd_rec");
+./tests/api/cmd.c:430:  /* Make sure we can handle cases where cmd_rec->argv has been tampered
+./tests/api/modules.c:200:static modret_t *call_cb(cmd_rec *cmd) {
+./tests/api/modules.c:207:  cmd_rec *cmd;
+./tests/api/modules.c:226:  cmd = pcalloc(p, sizeof(cmd_rec));
+./tests/api/response.c:133:  cmd_rec *cmd;
